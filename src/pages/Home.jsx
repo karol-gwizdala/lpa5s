@@ -3,7 +3,8 @@ import React from "react";
 export const Home = () => {
   return (
     <div>
-      <button>NEW AUDIT</button>
+      <h3>About</h3>
+      <p>Layered Process Audit 5S application</p>
     </div>
   );
 };
