@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Data from "../db.json";
 
 export const Navigation = () => {
   return (
@@ -26,6 +27,17 @@ export const Navigation = () => {
       <ul>
         <li>
           <Link to="/settings">Settings</Link>
+        </li>
+        <li>
+          <select>
+            <option value="" disabled selected>
+              User
+            </option>
+
+            {Data.map((record) => {
+              return <option>{record.layer}</option>;
+            })}
+          </select>
         </li>
       </ul>
     </nav>

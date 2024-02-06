@@ -4,14 +4,26 @@ import Data from "../db.json";
 export const Db = () => {
   return (
     <>
-      {Data.map((record) => {
-        return (
-          <div className="container" key={record.id}>
-            <p>{record.area}</p>
-            <p>{record.lastname}</p>
-          </div>
-        );
-      })}
+      <table role="grid">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Area</th>
+            <th>Layer</th>
+          </tr>
+        </thead>
+        <tbody>
+          {Data.map((record) => {
+            return (
+              <tr>
+                <td>{record.id}</td>
+                <td>{record.area}</td>
+                <td>{record.layer}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </>
   );
 };

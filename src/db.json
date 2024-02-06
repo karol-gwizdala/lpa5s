@@ -1,12 +1,22 @@
 [
   {
     "id": "1",
-    "area": "Magazyn",
-    "lastname": "Adamiec"
+    "area": "Warehouse",
+    "layer": "Shift Manager"
   },
   {
     "id": "2",
-    "area": "Biuro",
-    "lastname": "Kowalski"
+    "area": "Office",
+    "layer": "Lean"
+  },
+  {
+    "id": "3",
+    "area": "Plant",
+    "layer": "Director"
+  },
+  {
+    "id": "4",
+    "area": "Warehouse",
+    "layer": "Lean"
   }
 ]
