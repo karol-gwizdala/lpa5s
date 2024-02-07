@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Data from "../db.json";
+import Data from "../db/dbRole.json";
 
 export const Navigation = () => {
   return (

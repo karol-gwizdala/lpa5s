@@ -1,0 +1,14 @@
+[
+  {
+    "id": "1",
+    "area": "Warehouse"
+  },
+  {
+    "id": "2",
+    "area": "Office"
+  },
+  {
+    "id": "3",
+    "area": "Plant"
+  }
+]

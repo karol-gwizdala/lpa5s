@@ -1,16 +1,12 @@
 import React from "react";
-import Data from "../db.json";
+import Data from "../db/dbArea.json";
 
-export const Db = () => {
+export const Area = () => {
   return (
     <>
       <table role="grid">
         <thead>
-          <tr>
-            <th>#</th>
-            <th>Area</th>
-            <th>Layer</th>
-          </tr>
+          <h3>Area List:</h3>
         </thead>
         <tbody>
           {Data.map((record) => {
@@ -18,7 +14,6 @@ export const Db = () => {
               <tr>
                 <td>{record.id}</td>
                 <td>{record.area}</td>
-                <td>{record.layer}</td>
               </tr>
             );
           })}

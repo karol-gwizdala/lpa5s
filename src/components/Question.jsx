@@ -1,19 +1,19 @@
 import React from 'react'
-import Data from "../db/dbRole.json";
+import Data from "../db/dbQuestion.json";
 
-export const Role = () => {
+export const Question = () => {
   return (
     <>
     <table role="grid">
       <thead>
-        <h3>Role List:</h3>
+        <h3>Question List:</h3>
       </thead>
       <tbody>
         {Data.map((record) => {
           return (
             <tr>
               <td>{record.id}</td>
-              <td>{record.layer}</td>
+              <td>{record.question}</td>
             </tr>
           );
         })}
