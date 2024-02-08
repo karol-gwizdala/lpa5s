@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Data from "../db/dbRole.json";
+import { ToggleTheme } from "./ToggleTheme";
 
 export const Navigation = () => {
   return (
@@ -8,6 +9,9 @@ export const Navigation = () => {
       <ul>
         <li>
           <Link to="/">LPA5S</Link>
+        </li>
+        <li>
+          <button onClick={ToggleTheme.themeSwitcher}></button>
         </li>
       </ul>
       <ul>
