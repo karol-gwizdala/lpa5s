@@ -1,9 +1,12 @@
-import Dexie from 'dexie';
+import Dexie from "dexie";
 
-
-export const db = new Dexie('RoleList');
+export const db = new Dexie("RoleList");
 db.version(1).stores({
-  role: '++id, role' // Primary key and indexed props
+  role: "++id, role",
 });
-
-
+db.version(2).stores({
+  question: "++id, question",
+});
+db.version(3).stores({
+  area: "++id, area",
+});

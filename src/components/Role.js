@@ -21,18 +21,30 @@ export function Role() {
 
   const roles = useLiveQuery(() => db.role.toArray());
 
+  const removeItemFromDb = async (id) => {
+    await db.role.delete(id);
+  };
+
   return (
     <>
+      <h3>Role List:</h3>
       <table role="grid">
         <thead>
-          <h3>Role List:</h3>
+          <th>ID</th>
+          <th>Role</th>
+          <th>Delete</th>
         </thead>
         <tbody>
-          {roles?.map((role) => {
+          {roles?.map((item) => {
             return (
               <tr>
-                <td>{role.id}</td>
-                <td>{role.role}</td>
+                <td>{item.id}</td>
+                <td>{item.role}</td>
+                <td key={item.id}>
+                  <button onClick={() => removeItemFromDb(item.id)}>
+                    Delete
+                  </button>
+                </td>
               </tr>
             );
           })}

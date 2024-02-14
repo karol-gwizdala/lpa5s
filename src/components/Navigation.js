@@ -5,7 +5,6 @@ import { db } from "../db";
 import { useLiveQuery } from "dexie-react-hooks";
 
 export const Navigation = () => {
-
   const roles = useLiveQuery(() => db.role.toArray());
 
   return (
@@ -17,10 +16,7 @@ export const Navigation = () => {
       </ul>
       <ul>
         <li>
-          <Link to="/create">Create</Link>
-        </li>
-        <li>
-          <Link to="/todo">To Do</Link>
+          <Link to="/todo">ToDo</Link>
         </li>
         <li>
           <Link to="/delegated">Delegated</Link>
@@ -36,7 +32,7 @@ export const Navigation = () => {
         <li>
           <select>
             <option value="" disabled selected>
-            User
+              User
             </option>
             {roles?.map((role) => {
               return <option>{role.role}</option>;

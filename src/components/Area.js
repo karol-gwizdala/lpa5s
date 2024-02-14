@@ -1,24 +1,63 @@
-import React from "react";
-import Data from "../db/dbArea.json";
+import { useLiveQuery } from "dexie-react-hooks";
+import { db } from "../db";
+import { useState } from "react";
 
-export const Area = () => {
+export function Area() {
+  const [area, setArea] = useState("");
+  const [status, setStatus] = useState("");
+
+  async function addArea() {
+    try {
+      const id = await db.area.add({
+        area,
+      });
+
+      setStatus(`User "${area}" successfully added. Got id ${id}`);
+      setArea("");
+    } catch (error) {
+      setStatus(`Failed to add ${area}: ${error}`);
+    }
+  }
+
+  const areas = useLiveQuery(() => db.area.toArray());
+
+  const removeItemFromDb = async (id) => {
+    await db.area.delete(id);
+  };
+
   return (
     <>
+      <h3>Area List:</h3>
       <table role="grid">
         <thead>
-          <h3>Area List:</h3>
+          <th>ID</th>
+          <th>Area</th>
+          <th>Delete</th>
         </thead>
         <tbody>
-          {Data.map((record) => {
+          {areas?.map((item) => {
             return (
               <tr>
-                <td>{record.id}</td>
-                <td>{record.area}</td>
+                <td>{item.id}</td>
+                <td>{item.area}</td>
+                <td key={item.id}>
+                  <button onClick={() => removeItemFromDb(item.id)}>
+                    Delete
+                  </button>
+                </td>
               </tr>
             );
           })}
         </tbody>
       </table>
+
+      <input
+        type="text"
+        value={area}
+        onChange={(ev) => setArea(ev.target.value)}
+        placeholder="New Area"
+      />
+      <button onClick={addArea}>Add</button>
     </>
   );
-};
+}
