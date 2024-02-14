@@ -1,8 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Data from "../db/dbRole.json";
+
+import { db } from "../db";
+import { useLiveQuery } from "dexie-react-hooks";
 
 export const Navigation = () => {
+
+  const roles = useLiveQuery(() => db.role.toArray());
+
   return (
     <nav className="container">
       <ul>
@@ -31,11 +36,10 @@ export const Navigation = () => {
         <li>
           <select>
             <option value="" disabled selected>
-              User
+            User
             </option>
-
-            {Data.map((record) => {
-              return <option>{record.layer}</option>;
+            {roles?.map((role) => {
+              return <option>{role.role}</option>;
             })}
           </select>
         </li>

@@ -26,22 +26,7 @@ export const Settings = () => {
 
       <Role />
 
-      <form>
-        <div class="grid">
-          <label for="role">
-            <input
-              type="text"
-              id="role"
-              name="role"
-              placeholder="Role"
-              required
-            />
-          </label>
-        </div>
-
-        <button type="submit">Submit Role</button>
-      </form>
-
+  
       
       <Question />
 
