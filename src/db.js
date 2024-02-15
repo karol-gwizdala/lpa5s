@@ -1,6 +1,6 @@
 import Dexie from "dexie";
 
-export const db = new Dexie("RoleList");
+export const db = new Dexie("LPA");
 db.version(1).stores({
   role: "++id, role",
 });
@@ -9,4 +9,7 @@ db.version(2).stores({
 });
 db.version(3).stores({
   area: "++id, area",
+});
+db.version(5).stores({
+  audit: "++id, role, area, date",
 });

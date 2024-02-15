@@ -9,7 +9,11 @@ export const ToDo = () => {
     await db.audit.delete(id);
   };
 
-  
+  const [userAuditStatus, setUserAuditStatus] = useState("");
+
+  const updateItemDb = async (id) => {
+    await db.audit.update(id, {auditStatus: userAuditStatus});
+  };
 
   return (
     <div>
@@ -31,8 +35,22 @@ export const ToDo = () => {
                 <td>{item.role}</td>
                 <td>{item.area}</td>
                 <td>{item.date}</td>
-                <td>{item.auditStatus}</td>
-               
+                <td key={item.id}>
+                  <select
+                    value={item.auditStatus}
+                    onChange={(e) => {
+                      const selection = e.target.value;
+                      setUserAuditStatus(selection);
+                      ;
+                    }} onClick={()=> updateItemDb(item.id)}
+                  >
+                    <option value="" disabled selected>
+                      Status
+                    </option>
+                    <option value="new">New</option>
+                    <option value="completed">Completed</option>
+                  </select>
+                </td>
 
                 <td key={item.id}>
                   <button onClick={() => removeItemFromDb(item.id)}>

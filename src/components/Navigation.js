@@ -16,6 +16,9 @@ export const Navigation = () => {
       </ul>
       <ul>
         <li>
+          <Link to="/addaudit">New Audit</Link>
+        </li>
+        <li>
           <Link to="/todo">ToDo</Link>
         </li>
         <li>

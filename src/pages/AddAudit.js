@@ -1,20 +1,48 @@
 import { useLiveQuery } from "dexie-react-hooks";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { db } from "../db";
 
-export const AddAudit = () => {
+export function AddAudit() {
+  const [audit, setAudit] = useState("");
+  const [role, setRole] = useState("");
+  const [area, setArea] = useState("");
+  const [date, setDate] = useState("");
+  const [auditStatus, setAuditStatus] = useState("To Do");
+  const [status, setStatus] = useState("");
+
+  async function addAudit() {
+    try {
+      const id = await db.audit.add({
+        role,
+        area,
+        date,
+        auditStatus,
+      });
+
+      setStatus(`User "${audit}" successfully added. Got id ${id}`);
+      setAudit("");
+    } catch (error) {
+      setStatus(`Failed to add ${audit}: ${error}`);
+    }
+  }
+
   const roles = useLiveQuery(() => db.role.toArray());
   const areas = useLiveQuery(() => db.area.toArray());
   return (
     <dialog open>
       <article>
-        <h2>Create New Audit</h2>
-
-        <ul>
-          <li>
+        <form>
+          <h2>Create New Audit</h2>
+          <label>
             Role:
-            <select>
+            <select
+              value={role}
+              onChange={(e) => {
+                const selection = e.target.value;
+                setRole(selection);
+              }}
+            >
               <option value="" disabled selected>
                 Select
               </option>
@@ -22,10 +50,17 @@ export const AddAudit = () => {
                 return <option>{item.role}</option>;
               })}
             </select>
-          </li>
-          <li>
+          </label>
+
+          <label>
             Area:
-            <select>
+            <select
+              value={area}
+              onChange={(e) => {
+                const selection = e.target.value;
+                setArea(selection);
+              }}
+            >
               <option value="" disabled selected>
                 Select
               </option>
@@ -33,18 +68,35 @@ export const AddAudit = () => {
                 return <option>{item.area}</option>;
               })}
             </select>
-          </li>
-          <li>Due Date:</li>
-        </ul>
-        <footer>
-          <div>
+          </label>
+
+          <label>
+            Due Date:
+            <input
+              value={date}
+              onChange={(e) => {
+                const selection = e.target.value;
+                setDate(selection);
+              }}
+              type="date"
+              name="date"
+              aria-label="Date"
+            />
+          </label>
+
+          
+          <footer>
+            <div>
+              <Link to="/todo">
+                <button className="secondary">Cancel</button>
+              </Link>
+            </div>
             <Link to="/todo">
-              <button className="secondary">Cancel</button>
+              <button onClick={addAudit}>Confirm</button>
             </Link>
-          </div>
-          <button>Confirm</button>
-        </footer>
+          </footer>
+        </form>
       </article>
     </dialog>
   );
-};
+}
