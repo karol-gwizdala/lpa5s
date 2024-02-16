@@ -1,14 +1,15 @@
 import { useLiveQuery } from "dexie-react-hooks";
 import React, { useState } from "react";
 import { db } from "../db";
-import { Link } from "react-router-dom";
 
 export const ToDo = () => {
   const audits = useLiveQuery(() => db.audit.toArray());
 
-  // const removeItemFromDb = async (id) => {
-  //   await db.audit.delete(id);
-  // };
+  const removeItemFromDb = async (id) => {
+    await db.audit.delete(id);
+  };
+
+  
 
   return (
     <div>
@@ -20,21 +21,23 @@ export const ToDo = () => {
           <th>Area</th>
           <th>Due Date</th>
           <th>Status</th>
-          <th>Execute</th>
+          <th>Delete</th>
         </thead>
         <tbody>
           {audits?.map((item) => {
             return (
-              <tr key={item.id}>
+              <tr>
                 <td>{item.id}</td>
                 <td>{item.role}</td>
                 <td>{item.area}</td>
                 <td>{item.date}</td>
                 <td>{item.auditStatus}</td>
+               
+
                 <td key={item.id}>
-                  <Link to={`/executeaudit/${item.id}`}>
-                    <button>Execute</button>
-                  </Link>
+                  <button onClick={() => removeItemFromDb(item.id)}>
+                    Delete
+                  </button>
                 </td>
               </tr>
             );

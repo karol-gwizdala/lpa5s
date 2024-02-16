@@ -7,6 +7,7 @@ import { Completed } from "./pages/Completed";
 import { Route, Routes } from "react-router-dom";
 import { Settings } from "./pages/Settings";
 import { AddAudit } from "./pages/AddAudit";
+import { ExecuteAudit } from "./pages/ExecuteAudit";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/delegated" element={<Delegated />} />
           <Route path="/completed" element={<Completed />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/executeaudit/:auditId" element={<ExecuteAudit />} />
         </Routes>
       </main>
     </>
