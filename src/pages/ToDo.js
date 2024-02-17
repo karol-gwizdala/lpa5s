@@ -4,15 +4,16 @@ import { db } from "../db";
 import { Link } from "react-router-dom";
 
 export const ToDo = () => {
-  const audits = useLiveQuery(() => db.audit.toArray());
+  const audits = useLiveQuery(() => db.audit
+  .where("auditStatus")
+  .equals("To Do")
+  .toArray());
 
-  // const removeItemFromDb = async (id) => {
-  //   await db.audit.delete(id);
-  // };
+  
 
   return (
     <div>
-      <h3>Audit List:</h3>
+      <h3>Audit List [ To Do ]:</h3>
       <table role="grid">
         <thead>
           <th>ID</th>

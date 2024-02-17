@@ -8,6 +8,8 @@ import { Route, Routes } from "react-router-dom";
 import { Settings } from "./pages/Settings";
 import { AddAudit } from "./pages/AddAudit";
 import { ExecuteAudit } from "./pages/ExecuteAudit";
+import { ConfirmModal } from "./components/ConfirmModal";
+import { DeleteModal } from "./components/DeleteModal";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
           <Route path="/completed" element={<Completed />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/executeaudit/:auditId" element={<ExecuteAudit />} />
+          <Route path="/executeaudit/confirmmodal/:auditId" element={<ConfirmModal />} />
+          <Route path="/executeaudit/deletemodal/:auditId" element={<DeleteModal />} />
         </Routes>
       </main>
     </>

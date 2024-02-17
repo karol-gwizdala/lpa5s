@@ -22,10 +22,10 @@ export const Navigation = () => {
           <Link to="/todo">ToDo</Link>
         </li>
         <li>
-          <Link to="/delegated">Delegated</Link>
+          <Link to="/completed">Completed</Link>
         </li>
         <li>
-          <Link to="/completed">Completed</Link>
+          <Link to="/delegated">Delegated</Link>
         </li>
       </ul>
       <ul>

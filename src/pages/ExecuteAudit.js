@@ -1,7 +1,8 @@
 import { useLiveQuery } from "dexie-react-hooks";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { db } from "../db";
 import { Link, useParams } from "react-router-dom";
+import { ConfirmModal } from "../components/ConfirmModal";
 
 export const ExecuteAudit = () => {
   const { auditId } = useParams();
@@ -16,13 +17,14 @@ export const ExecuteAudit = () => {
   const questions = useLiveQuery(() => db.question.toArray());
 
   const [userQuestionStatus, setUserQuestionStatus] = useState("");
-  // const [answerStatus, setAnswerStatus] = useState = () => {
-  //   if (userQuestionStatus !== "OK") {
-  //     setAnswerStatus("true")
-  //   } else {
-  //     setAnswerStatus("false")
-  //   }
-  // };
+  const [answerStatus, setAnswerStatus] = useState("true");
+  useEffect(() => {
+    if (userQuestionStatus === "OK") {
+      setAnswerStatus("false");
+    } else {
+      setAnswerStatus("true");
+    }
+  }, [userQuestionStatus, answerStatus]);
 
   const updateItemDb = async (id) => {
     await db.question.update(id, { questionStatus: userQuestionStatus });
@@ -35,14 +37,18 @@ export const ExecuteAudit = () => {
           <h3>
             <tr>
               <td>{item.id}</td>
+              <td>|</td>
               <td>{item.role}</td>
+              <td>|</td>
               <td>{item.area}</td>
+              <td>|</td>
+              <td>{item.date}</td>
             </tr>
           </h3>
         );
       })}
 
-      <h4>Question List:</h4>
+      <h4>Questions List:</h4>
       <table role="grid">
         <thead>
           <th>ID</th>
@@ -68,7 +74,7 @@ export const ExecuteAudit = () => {
                     name="questionStatus"
                     aria-label=""
                     required
-                    aria-invalid={"false"}
+                    aria-invalid={answerStatus}
                   >
                     <option selected disabled value="">
                       Answer
@@ -82,8 +88,11 @@ export const ExecuteAudit = () => {
           })}
         </tbody>
       </table>
-      <Link to={"/todo"}>
+      <Link to={`/executeaudit/confirmmodal/${auditId}`}>
         <button>Complete Audit</button>
+      </Link>
+      <Link to={`/executeaudit/deletemodal/${auditId}`}>
+        <button class="secondary">Delete</button>
       </Link>
     </div>
   );

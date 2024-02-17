@@ -10,6 +10,6 @@ db.version(2).stores({
 db.version(3).stores({
   area: "++id, area",
 });
-db.version(5).stores({
-  audit: "++id, role, area, date",
+db.version(6).stores({
+  audit: "++id, role, area, date, auditStatus",
 });
