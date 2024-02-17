@@ -4,12 +4,13 @@ import { useState } from "react";
 
 export function Question() {
   const [question, setQuestion] = useState("");
+  const [questionStatus, setQuestionStatus] = useState("NOK");
   const [status, setStatus] = useState("");
 
   async function addQuestion() {
     try {
       const id = await db.question.add({
-        question,
+        question, questionStatus
       });
 
       setStatus(`User "${question}" successfully added. Got id ${id}`);
@@ -27,7 +28,7 @@ export function Question() {
 
   return (
     <>
-      <h3>Question List:</h3>
+      <h4>Question List:</h4>
       <table role="grid">
         <thead>
           <th>ID</th>

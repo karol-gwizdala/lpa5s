@@ -27,7 +27,7 @@ export function Area() {
 
   return (
     <>
-      <h3>Area List:</h3>
+      <h4>Area List:</h4>
       <table role="grid">
         <thead>
           <th>ID</th>
