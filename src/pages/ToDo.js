@@ -2,11 +2,13 @@ import { useLiveQuery } from "dexie-react-hooks";
 import React, { useState } from "react";
 import { db } from "../db";
 import { Link } from "react-router-dom";
+import { Question1 } from "../components/Question1";
+import { SelectedUser } from "../components/SelectedUser";
 
 export const ToDo = () => {
   const audits = useLiveQuery(() => db.audit
   .where("auditStatus")
-  .equals("To Do")
+  .equals("To Do").and(item => item.role === "Lean")
   .toArray());
 
   
@@ -19,7 +21,7 @@ export const ToDo = () => {
           <th>ID</th>
           <th>Role</th>
           <th>Area</th>
-          <th>Due Date</th>
+          <th>Date</th>
           <th>Status</th>
           <th>Execute</th>
         </thead>

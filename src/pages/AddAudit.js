@@ -4,11 +4,16 @@ import { Link } from "react-router-dom";
 import { db } from "../db";
 
 export function AddAudit() {
-  const [audit, setAudit] = useState("");
   const [role, setRole] = useState("");
   const [area, setArea] = useState("");
   const [date, setDate] = useState("");
-  const [auditStatus, setAuditStatus] = useState("To Do");
+  const auditStatus = "To Do";
+  const questionStatus = "-";
+  const question1a = "Pytanie nr 1";
+  const question2a = "Pytanie nr 2";
+  const question3a = "Pytanie nr 3";
+  const question4a = "Pytanie nr 4";
+  const question5a = "Pytanie nr 5";
   const [status, setStatus] = useState("");
 
   async function addAudit() {
@@ -18,17 +23,27 @@ export function AddAudit() {
         area,
         date,
         auditStatus,
+        question1: question1a,
+        question2: question2a,
+        question3: question3a,
+        question4: question4a,
+        question5: question5a,
+        question1Status: questionStatus,
+        question2Status: questionStatus,
+        question3Status: questionStatus,
+        question4Status: questionStatus,
+        question5Status: questionStatus,
       });
 
-      setStatus(`User "${audit}" successfully added. Got id ${id}`);
-      setAudit("");
+      setStatus(`Audit successfully added. Got id ${id}`);
     } catch (error) {
-      setStatus(`Failed to add ${audit}: ${error}`);
+      setStatus(`Failed to add : ${error}`);
     }
   }
 
   const roles = useLiveQuery(() => db.role.toArray());
   const areas = useLiveQuery(() => db.area.toArray());
+
   return (
     <dialog open>
       <article>
@@ -71,7 +86,7 @@ export function AddAudit() {
           </label>
 
           <label>
-            Due Date:
+            Date:
             <input
               value={date}
               onChange={(e) => {

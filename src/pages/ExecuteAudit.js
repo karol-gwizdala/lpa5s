@@ -2,7 +2,11 @@ import { useLiveQuery } from "dexie-react-hooks";
 import React, { useEffect, useState } from "react";
 import { db } from "../db";
 import { Link, useParams } from "react-router-dom";
-import { ConfirmModal } from "../components/ConfirmModal";
+import { Question1 } from "../components/Question1";
+import { Question2 } from "../components/Question2";
+import { Question3 } from "../components/Question3";
+import { Question4 } from "../components/Question4";
+import { Question5 } from "../components/Question5";
 
 export const ExecuteAudit = () => {
   const { auditId } = useParams();
@@ -13,22 +17,6 @@ export const ExecuteAudit = () => {
       .equals(auditId * 1)
       .toArray()
   );
-
-  const questions = useLiveQuery(() => db.question.toArray());
-
-  const [userQuestionStatus, setUserQuestionStatus] = useState("");
-  const [answerStatus, setAnswerStatus] = useState("true");
-  useEffect(() => {
-    if (userQuestionStatus === "OK") {
-      setAnswerStatus("false");
-    } else {
-      setAnswerStatus("true");
-    }
-  }, [userQuestionStatus, answerStatus]);
-
-  const updateItemDb = async (id) => {
-    await db.question.update(id, { questionStatus: userQuestionStatus });
-  };
 
   return (
     <div>
@@ -49,45 +37,13 @@ export const ExecuteAudit = () => {
       })}
 
       <h4>Questions List:</h4>
-      <table role="grid">
-        <thead>
-          <th>ID</th>
-          <th>Question</th>
-          <th>QuestionStatus</th>
-          <th>Check</th>
-        </thead>
-        <tbody>
-          {questions?.map((item) => {
-            return (
-              <tr key={item.id}>
-                <td>{item.id}</td>
-                <td>{item.question}</td>
-                <td>{item.questionStatus}</td>
-                <td>
-                  <select
-                    value={item.questionStatus}
-                    onChange={(e) => {
-                      const selection = e.target.value;
-                      setUserQuestionStatus(selection);
-                    }}
-                    onClick={() => updateItemDb(item.id)}
-                    name="questionStatus"
-                    aria-label=""
-                    required
-                    aria-invalid={answerStatus}
-                  >
-                    <option selected disabled value="">
-                      Answer
-                    </option>
-                    <option>OK</option>
-                    <option>NOK</option>
-                  </select>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+
+      <Question1 />
+      <Question2 />
+      <Question3 />
+      <Question4 />
+      <Question5 />
+
       <Link to={`/executeaudit/confirmmodal/${auditId}`}>
         <button>Complete Audit</button>
       </Link>

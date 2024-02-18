@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 export const Completed = () => {
   const audits = useLiveQuery(() => db.audit
   .where("auditStatus")
-  .equals("Completed")
+  .equals("Completed").and(item => item.role === "Lean")
   .toArray());
 
   
@@ -19,7 +19,7 @@ export const Completed = () => {
           <th>ID</th>
           <th>Role</th>
           <th>Area</th>
-          <th>Due Date</th>
+          <th>Date</th>
           <th>Status</th>
           <th>Execute</th>
         </thead>

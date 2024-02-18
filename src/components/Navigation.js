@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import { db } from "../db";
 import { useLiveQuery } from "dexie-react-hooks";
+import { SelectedUser } from "./SelectedUser";
 
 export const Navigation = () => {
   const roles = useLiveQuery(() => db.role.toArray());
@@ -33,14 +34,15 @@ export const Navigation = () => {
           <Link to="/settings">Settings</Link>
         </li>
         <li>
-          <select>
+          {/* <select>
             <option value="" disabled selected>
               User
             </option>
             {roles?.map((role) => {
               return <option>{role.role}</option>;
             })}
-          </select>
+          </select> */}
+          <SelectedUser />
         </li>
       </ul>
     </nav>
