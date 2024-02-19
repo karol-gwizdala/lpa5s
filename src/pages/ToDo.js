@@ -1,17 +1,20 @@
 import { useLiveQuery } from "dexie-react-hooks";
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { db } from "../db";
 import { Link } from "react-router-dom";
-import { Question1 } from "../components/Question1";
-import { SelectedUser } from "../components/SelectedUser";
+import { SelectedUserContext } from "../contexts/SelectedUserContext"
 
 export const ToDo = () => {
-  const audits = useLiveQuery(() => db.audit
-  .where("auditStatus")
-  .equals("To Do").and(item => item.role === "Lean")
-  .toArray());
 
-  
+const {userRole} = useContext(SelectedUserContext);
+
+  const audits = useLiveQuery(() =>
+    db.audit
+      .where("auditStatus")
+      .equals("To Do")
+      .and((item) => item.role === userRole)
+      .toArray()
+  );
 
   return (
     <div>
@@ -24,6 +27,7 @@ export const ToDo = () => {
           <th>Date</th>
           <th>Status</th>
           <th>Execute</th>
+          <th>Delete</th>
         </thead>
         <tbody>
           {audits?.map((item) => {
@@ -35,10 +39,13 @@ export const ToDo = () => {
                 <td>{item.date}</td>
                 <td>{item.auditStatus}</td>
                 <td key={item.id}>
-                  <Link to={`/executeaudit/${item.id}`}>
+                  <Link to={`/executeaudit/question1/${item.id}`}>
                     <button>Execute</button>
                   </Link>
                 </td>
+                <td><Link to={`/executeaudit/deletemodal/${item.id}`}>
+                <button class="secondary">Delete</button>
+              </Link></td>
               </tr>
             );
           })}

@@ -4,19 +4,18 @@ import { useState } from "react";
 
 export function Question() {
   const [question, setQuestion] = useState("");
-  const [questionStatus, setQuestionStatus] = useState("NOK");
-  const [status, setStatus] = useState("");
+  const questionStatus = "NOK";
 
   async function addQuestion() {
     try {
       const id = await db.question.add({
-        question, questionStatus
+        question,
+        questionStatus,
       });
 
-      setStatus(`User "${question}" successfully added. Got id ${id}`);
-      setQuestion("");
+      console.log(`Item ${id} added to db`);
     } catch (error) {
-      setStatus(`Failed to add ${question}: ${error}`);
+      console.log("Error");
     }
   }
 
@@ -55,7 +54,7 @@ export function Question() {
       <input
         type="text"
         value={question}
-        onChange={(ev) => setQuestion(ev.target.value)}
+        onChange={(event) => setQuestion(event.target.value)}
         placeholder="New Question"
       />
       <button onClick={addQuestion}>Add</button>

@@ -4,7 +4,6 @@ import { useState } from "react";
 
 export function Area() {
   const [area, setArea] = useState("");
-  const [status, setStatus] = useState("");
 
   async function addArea() {
     try {
@@ -12,10 +11,9 @@ export function Area() {
         area,
       });
 
-      setStatus(`User "${area}" successfully added. Got id ${id}`);
-      setArea("");
+      console.log(`Item ${id} added to db`);
     } catch (error) {
-      setStatus(`Failed to add ${area}: ${error}`);
+      console.log("Error");
     }
   }
 
@@ -54,7 +52,7 @@ export function Area() {
       <input
         type="text"
         value={area}
-        onChange={(ev) => setArea(ev.target.value)}
+        onChange={(event) => setArea(event.target.value)}
         placeholder="New Area"
       />
       <button onClick={addArea}>Add</button>

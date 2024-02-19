@@ -1,6 +1,6 @@
 import { useLiveQuery } from "dexie-react-hooks";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { db } from "../db";
 
 export const Question3 = () => {
@@ -28,40 +28,47 @@ export const Question3 = () => {
   }, [userQuestionStatus, answerStatus]);
 
   return (
-    <div>
-      <table>
-        <tbody>
-          {audits?.map((item) => {
-            return (
-              <tr>
-                <td>{item.id}</td>
-                <td>{item.question3}</td>
-                <td>{item.question3Status}</td>
-                <td>
-                  <select
-                    value={item.question3Status}
-                    onChange={(e) => {
-                      const selection = e.target.value;
-                      setUserQuestionStatus(selection);
-                    }}
-                    onClick={() => updateItemDb(item.id)}
-                    name="question3Status"
-                    aria-label=""
-                    required
-                    aria-invalid={answerStatus}
-                  >
-                    <option value="-" disabled selected>
-                      -
-                    </option>
-                    <option>OK</option>
-                    <option>NOK</option>
-                  </select>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
+    <dialog open>
+      <article>
+        {audits?.map((item) => {
+          return (
+            <div>
+              <h3>Question 3</h3>
+              {/* <p>{item.id}</p> */}
+              <p>{item.question3}</p>
+              {/* <p>{item.question3Status}</p> */}
+
+              <p>
+                <select
+                  value={item.question3Status}
+                  onChange={(event) => {
+                    setUserQuestionStatus(event.target.value);
+                  }}
+                  onClick={() => updateItemDb(item.id)}
+                  name="question3Status"
+                  aria-label=""
+                  required
+                  aria-invalid={answerStatus}
+                >
+                  <option value="-" disabled selected>
+                    -
+                  </option>
+
+                  <option>NOK</option>
+
+                  <option>OK</option>
+                </select>
+              </p>
+              <Link to={`/executeaudit/question4/${auditId}`}>
+                <button>Next</button>
+              </Link>
+              <Link to={`/executeaudit/question2/${auditId}`}>
+                <button class="secondary">Back</button>
+              </Link>
+            </div>
+          );
+        })}
+      </article>
+    </dialog>
   );
 };

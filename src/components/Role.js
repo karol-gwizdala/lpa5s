@@ -4,18 +4,15 @@ import { useState } from "react";
 
 export function Role() {
   const [role, setRole] = useState("");
-  const [status, setStatus] = useState("");
 
   async function addRole() {
     try {
       const id = await db.role.add({
         role,
       });
-
-      setStatus(`User "${role}" successfully added. Got id ${id}`);
-      setRole("");
+      console.log(`Item ${id} added to db`);
     } catch (error) {
-      setStatus(`Failed to add ${role}: ${error}`);
+      console.log("Error");
     }
   }
 
@@ -54,7 +51,7 @@ export function Role() {
       <input
         type="text"
         value={role}
-        onChange={(ev) => setRole(ev.target.value)}
+        onChange={(event) => setRole(event.target.value)}
         placeholder="New Role"
       />
       <button onClick={addRole}>Add</button>

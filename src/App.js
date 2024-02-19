@@ -10,6 +10,11 @@ import { AddAudit } from "./pages/AddAudit";
 import { ExecuteAudit } from "./pages/ExecuteAudit";
 import { ConfirmModal } from "./components/ConfirmModal";
 import { DeleteModal } from "./components/DeleteModal";
+import { Question1 } from "./components/Question1";
+import { Question2 } from "./components/Question2";
+import { Question3 } from "./components/Question3";
+import { Question4 } from "./components/Question4";
+import { Question5 } from "./components/Question5";
 
 function App() {
   return (
@@ -26,6 +31,11 @@ function App() {
           <Route path="/executeaudit/:auditId" element={<ExecuteAudit />} />
           <Route path="/executeaudit/confirmmodal/:auditId" element={<ConfirmModal />} />
           <Route path="/executeaudit/deletemodal/:auditId" element={<DeleteModal />} />
+          <Route path="/executeaudit/question1/:auditId" element={<Question1 />} />
+          <Route path="/executeaudit/question2/:auditId" element={<Question2 />} />
+          <Route path="/executeaudit/question3/:auditId" element={<Question3 />} />
+          <Route path="/executeaudit/question4/:auditId" element={<Question4 />} />
+          <Route path="/executeaudit/question5/:auditId" element={<Question5 />} />
         </Routes>
       </main>
     </>

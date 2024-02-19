@@ -1,12 +1,16 @@
 import { useLiveQuery } from 'dexie-react-hooks';
-import React from 'react'
+import React, { useContext } from 'react'
 import { db } from '../db';
 import { Link } from 'react-router-dom';
+import { SelectedUserContext } from "../contexts/SelectedUserContext"
 
 export const Completed = () => {
+
+  const {userRole} = useContext(SelectedUserContext);
+
   const audits = useLiveQuery(() => db.audit
   .where("auditStatus")
-  .equals("Completed").and(item => item.role === "Lean")
+  .equals("Completed").and(item => item.role === userRole)
   .toArray());
 
   

@@ -19,7 +19,7 @@ export const DeleteModal = () => {
               Delete
             </button>
           </Link>
-          <Link to={`/executeaudit/${auditId}`}>
+          <Link to={"/todo"}>
             <button>Cancel</button>
           </Link>
         </footer>

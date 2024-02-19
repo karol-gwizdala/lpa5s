@@ -14,7 +14,6 @@ export function AddAudit() {
   const question3a = "Pytanie nr 3";
   const question4a = "Pytanie nr 4";
   const question5a = "Pytanie nr 5";
-  const [status, setStatus] = useState("");
 
   async function addAudit() {
     try {
@@ -35,9 +34,9 @@ export function AddAudit() {
         question5Status: questionStatus,
       });
 
-      setStatus(`Audit successfully added. Got id ${id}`);
+      console.log(`Item ${id} added to db`);
     } catch (error) {
-      setStatus(`Failed to add : ${error}`);
+      console.log("Error");
     }
   }
 
@@ -53,10 +52,7 @@ export function AddAudit() {
             Role:
             <select
               value={role}
-              onChange={(e) => {
-                const selection = e.target.value;
-                setRole(selection);
-              }}
+              onChange={(event) => setRole(event.target.value)}
             >
               <option value="" disabled selected>
                 Select
@@ -71,10 +67,7 @@ export function AddAudit() {
             Area:
             <select
               value={area}
-              onChange={(e) => {
-                const selection = e.target.value;
-                setArea(selection);
-              }}
+              onChange={(event) => setArea(event.target.value)}
             >
               <option value="" disabled selected>
                 Select
@@ -89,10 +82,7 @@ export function AddAudit() {
             Date:
             <input
               value={date}
-              onChange={(e) => {
-                const selection = e.target.value;
-                setDate(selection);
-              }}
+              onChange={(event) => setDate(event.target.value)}
               type="date"
               name="date"
               aria-label="Date"

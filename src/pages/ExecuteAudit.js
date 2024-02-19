@@ -1,5 +1,4 @@
 import { useLiveQuery } from "dexie-react-hooks";
-import React, { useEffect, useState } from "react";
 import { db } from "../db";
 import { Link, useParams } from "react-router-dom";
 import { Question1 } from "../components/Question1";
