@@ -19,9 +19,6 @@ export const Navigation = () => {
         <li>
           <Link to="/completed">Completed</Link>
         </li>
-        <li>
-          <Link to="/delegated">Delegated</Link>
-        </li>
       </ul>
       <ul>
         <li>

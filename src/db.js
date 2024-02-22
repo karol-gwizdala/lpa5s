@@ -10,7 +10,10 @@ db.version(2).stores({
 db.version(3).stores({
   area: "++id, area",
 });
-db.version(7).stores({
+db.version(10).stores({
   audit: "++id, role, area, date, auditStatus, question1, question2, question3, question4, question5, question1Status, question2Status, question3Status, question4Status, question5Status",
   
+});
+db.version(3).stores({
+  remark: "++id, auditId, auditRole, auditArea, auditDate, remarkStatus, remarkRole, remarkDate, remark, remarkComment",
 });

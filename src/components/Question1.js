@@ -2,6 +2,7 @@ import { useLiveQuery } from "dexie-react-hooks";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { db } from "../db";
+import { DelegateTask } from "./DelegateTask";
 
 export const Question1 = () => {
   const { auditId } = useParams();
@@ -53,12 +54,12 @@ export const Question1 = () => {
                   <option value="-" disabled selected>
                     -
                   </option>
-
                   <option>NOK</option>
-
                   <option>OK</option>
                 </select>
               </p>
+              <DelegateTask />
+
               <Link to={`/executeaudit/question2/${auditId}`}>
                 <button>Next</button>
               </Link>

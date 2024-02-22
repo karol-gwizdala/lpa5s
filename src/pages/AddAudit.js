@@ -9,6 +9,7 @@ export function AddAudit() {
   const [date, setDate] = useState("");
   const auditStatus = "To Do";
   const questionStatus = "-";
+  const questionRemark = "";  
   const question1a = "Pytanie nr 1";
   const question2a = "Pytanie nr 2";
   const question3a = "Pytanie nr 3";
@@ -32,6 +33,11 @@ export function AddAudit() {
         question3Status: questionStatus,
         question4Status: questionStatus,
         question5Status: questionStatus,
+        question1Remark: questionRemark,
+        question2Remark: questionRemark,
+        question3Remark: questionRemark,
+        question4Remark: questionRemark,
+        question5Remark: questionRemark,
       });
 
       console.log(`Item ${id} added to db`);

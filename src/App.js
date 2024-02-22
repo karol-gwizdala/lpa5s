@@ -15,6 +15,8 @@ import { Question2 } from "./components/Question2";
 import { Question3 } from "./components/Question3";
 import { Question4 } from "./components/Question4";
 import { Question5 } from "./components/Question5";
+import { CompletedDetails } from "./pages/CompletedDetails";
+import { ExecuteTask } from "./pages/ExecuteTask";
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
           <Route path="/completed" element={<Completed />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/executeaudit/:auditId" element={<ExecuteAudit />} />
+          <Route path="/executetask/:auditId" element={<ExecuteTask />} />
+          <Route path="/completeddetails/:auditId" element={<CompletedDetails />} />
           <Route path="/executeaudit/confirmmodal/:auditId" element={<ConfirmModal />} />
           <Route path="/executeaudit/deletemodal/:auditId" element={<DeleteModal />} />
           <Route path="/executeaudit/question1/:auditId" element={<Question1 />} />
