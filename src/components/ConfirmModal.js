@@ -6,7 +6,7 @@ export const ConfirmModal = () => {
   const { auditId } = useParams();
 
   const updateItemDb = async (id) => {
-    await db.audit.update(id, { auditStatus: "Completed" });
+    await db.audit.update(id, { auditStatus: "Completed (Audit)" });
   };
   return (
     <dialog open>

@@ -27,7 +27,7 @@ export function Question() {
 
   return (
     <>
-      <h4>Question List:</h4>
+      <button disabled>Question List:</button>
       <table role="grid">
         <thead>
           <th>ID</th>

@@ -35,10 +35,7 @@ export const Question1 = () => {
           return (
             <div>
               <h3>Question 1</h3>
-              {/* <p>{item.id}</p> */}
               <p>{item.question1}</p>
-              {/* <p>{item.question1Status}</p> */}
-
               <p>
                 <select
                   value={item.question1Status}

@@ -24,7 +24,7 @@ export function DelegateTask() {
   const auditDate = audits?.map((item) => {
     return item.date;
   });
- 
+
   const auditArea = audits?.map((item) => {
     return item.area;
   });
@@ -40,7 +40,7 @@ export function DelegateTask() {
         remarkRole,
         remarkDate,
         remark,
-        remarkComment: "",
+        remarkComment: "com",
       });
 
       console.log(`Item ${id} added to db`);
@@ -82,24 +82,6 @@ export function DelegateTask() {
         aria-label="Date"
       />
       <button onClick={addRemark}>Add</button>
-      <tbody>
-        {remarks?.map((item) => {
-          return (
-            <tr>
-              <td>{item.id}</td>
-              <td>{item.auditId}</td>
-              <td>{item.remarkDate}</td>
-              <td>{item.remarkRole}</td>
-              <td>{item.remark}</td>
-              <td>{item.auditRole}</td>
-              <td>{item.auditArea}</td>
-              <td>{item.auditDate}</td>
-              <td>{item.remarkStatus}</td>
-              <td>{item.remarkComment}</td>
-            </tr>
-          );
-        })}
-      </tbody>
     </details>
   );
 }

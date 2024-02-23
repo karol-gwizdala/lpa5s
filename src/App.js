@@ -2,7 +2,6 @@ import "@picocss/pico";
 import { Navigation } from "./components/Navigation";
 import { Home } from "./pages/Home";
 import { ToDo } from "./pages/ToDo";
-import { Delegated } from "./pages/Delegated";
 import { Completed } from "./pages/Completed";
 import { Route, Routes } from "react-router-dom";
 import { Settings } from "./pages/Settings";
@@ -17,6 +16,7 @@ import { Question4 } from "./components/Question4";
 import { Question5 } from "./components/Question5";
 import { CompletedDetails } from "./pages/CompletedDetails";
 import { ExecuteTask } from "./pages/ExecuteTask";
+import { CompletedTaskDetails } from "./pages/CompletedTaskDetails";
 
 function App() {
   return (
@@ -27,12 +27,12 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/addaudit" element={<AddAudit />} />
           <Route path="/todo" element={<ToDo />} />
-          <Route path="/delegated" element={<Delegated />} />
           <Route path="/completed" element={<Completed />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/executeaudit/:auditId" element={<ExecuteAudit />} />
           <Route path="/executetask/:auditId" element={<ExecuteTask />} />
           <Route path="/completeddetails/:auditId" element={<CompletedDetails />} />
+          <Route path="/completedtaskdetails/:auditId" element={<CompletedTaskDetails />} />
           <Route path="/executeaudit/confirmmodal/:auditId" element={<ConfirmModal />} />
           <Route path="/executeaudit/deletemodal/:auditId" element={<DeleteModal />} />
           <Route path="/executeaudit/question1/:auditId" element={<Question1 />} />

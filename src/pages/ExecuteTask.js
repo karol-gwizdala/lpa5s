@@ -5,8 +5,6 @@ import { db } from "../db";
 
 export const ExecuteTask = () => {
   const { auditId } = useParams();
-  const [remarkComment, setRemarkComment] = useState("");
-  const [remarkStatus, setRemarkStatus] = useState("");
 
   const remarks = useLiveQuery(() =>
     db.remark
@@ -16,8 +14,11 @@ export const ExecuteTask = () => {
   );
 
   const updateItemDb = async (id) => {
-    await db.remark.update(id, { remarkStatus: remarkStatus });
+    await db.remark.update(id, { remarkStatus: "Completed (Task)" });
+    await db.remark.update(id, { remarkComment: remarkComment });
   };
+
+  const [remarkComment, setRemarkComment] = useState("");
 
   return (
     <dialog open>
@@ -30,7 +31,9 @@ export const ExecuteTask = () => {
               <p>
                 <input
                   value={remarkComment}
-                  onChange={(event) => setRemarkComment(event.target.value)}
+                  onChange={(event) => {
+                    setRemarkComment(event.target.value);
+                  }}
                   type="text"
                   name="text"
                   placeholder="Comment"
@@ -40,9 +43,9 @@ export const ExecuteTask = () => {
 
               <Link to={"/completed"}>
                 <button
-                  onClick={() =>
-                    setRemarkStatus("Completed (Task)" && updateItemDb(item.id))
-                  }
+                  onClick={() => {
+                    updateItemDb(item.id);
+                  }}
                 >
                   Complete Task
                 </button>

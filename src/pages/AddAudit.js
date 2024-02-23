@@ -7,7 +7,7 @@ export function AddAudit() {
   const [role, setRole] = useState("");
   const [area, setArea] = useState("");
   const [date, setDate] = useState("");
-  const auditStatus = "To Do";
+  const auditStatus = "To Do (Audit)";
   const questionStatus = "-";
   const questionRemark = "";  
   const question1a = "Pytanie nr 1";

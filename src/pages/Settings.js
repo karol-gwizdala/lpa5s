@@ -6,11 +6,11 @@ import { Question } from "../components/Question";
 export const Settings = () => {
   return (
     <>
-      <Area />
+      <article><Area /></article>
 
-      <Role />
+      <article><Role /></article>
 
-      <Question />
+      <article><Question /></article>
     </>
   );
 };
