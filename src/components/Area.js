@@ -56,6 +56,7 @@ export function Area() {
         placeholder="New Area"
       />
       <button onClick={addArea}>Add</button>
+      <button onClick={addArea}>Clear</button>
     </>
   );
 }

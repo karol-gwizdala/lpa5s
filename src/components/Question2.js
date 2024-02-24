@@ -34,6 +34,7 @@ export const Question2 = () => {
         {audits?.map((item) => {
           return (
             <div>
+              <progress value="40" max="100" />
               <h3>Question 2</h3>
               <p>{item.question2}</p>
               <p>

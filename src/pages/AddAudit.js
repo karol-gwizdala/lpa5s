@@ -4,17 +4,42 @@ import { Link } from "react-router-dom";
 import { db } from "../db";
 
 export function AddAudit() {
+  const questions = useLiveQuery(() => db.question.toArray());
+  const questionsMapLength = questions?.map((item) => item.question).length;
+
+  function numberOfArrayElements() {
+    let newArray = [];
+    for (let i = 0; i < questionsMapLength; i++) {
+      let arrayItem = questions?.map((item) => item.question)[i];
+      newArray.push(arrayItem);
+    }
+    return newArray;
+  }
+  const arrayQuestion = numberOfArrayElements();
+
+  function genRandomElements(array) {
+    let currentArray = [...array];
+    let newArray = [];
+    for (let i = 0; i < 5; i++) {
+      let randNum = Math.floor(Math.random() * currentArray.length);
+      let splicedItem = currentArray.splice(randNum, 1)[0];
+      newArray.push(splicedItem);
+    }
+    return newArray;
+  }
+  const arrayQuestionRandom = genRandomElements(arrayQuestion);
+
   const [role, setRole] = useState("");
   const [area, setArea] = useState("");
   const [date, setDate] = useState("");
   const auditStatus = "To Do (Audit)";
   const questionStatus = "-";
-  const questionRemark = "";  
-  const question1a = "Pytanie nr 1";
-  const question2a = "Pytanie nr 2";
-  const question3a = "Pytanie nr 3";
-  const question4a = "Pytanie nr 4";
-  const question5a = "Pytanie nr 5";
+  const questionRemark = "";
+  const question1 = arrayQuestionRandom[0];
+  const question2 = arrayQuestionRandom[1];
+  const question3 = arrayQuestionRandom[2];
+  const question4 = arrayQuestionRandom[3];
+  const question5 = arrayQuestionRandom[4];
 
   async function addAudit() {
     try {
@@ -23,11 +48,11 @@ export function AddAudit() {
         area,
         date,
         auditStatus,
-        question1: question1a,
-        question2: question2a,
-        question3: question3a,
-        question4: question4a,
-        question5: question5a,
+        question1: question1,
+        question2: question2,
+        question3: question3,
+        question4: question4,
+        question5: question5,
         question1Status: questionStatus,
         question2Status: questionStatus,
         question3Status: questionStatus,
