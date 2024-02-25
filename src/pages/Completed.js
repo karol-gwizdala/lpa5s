@@ -24,10 +24,10 @@ export const Completed = () => {
   );
 
   return (
-    <div>
+    <div class="grid">
       <article>
-        <button disabled>Audit List [ Completed ]:</button>
-        <table role="grid">
+        <button type="submit" disabled>Audit List [ Completed ]</button>
+        <table class="striped">
           <thead>
             <th>ID</th>
             <th>Area</th>
@@ -43,7 +43,7 @@ export const Completed = () => {
                   <td>{item.date}</td>
                   <td key={item.id}>
                     <Link to={`/completeddetails/${item.id}`}>
-                      <button>Details</button>
+                      <button type="submit">Details</button>
                     </Link>
                   </td>
                 </tr>
@@ -53,8 +53,8 @@ export const Completed = () => {
         </table>
       </article>
       <article>
-        <button disabled>Task List [ Completed ]:</button>
-        <table role="grid">
+        <button type="submit" disabled>Task List [ Completed ]</button>
+        <table class="striped">
           <thead>
             <th>ID</th>
             <th>Area</th>
@@ -70,7 +70,7 @@ export const Completed = () => {
                   <td>{item.remarkDate}</td>
                   <td key={item.id}>
                     <Link to={`/completedtaskdetails/${item.id}`}>
-                      <button>Details</button>
+                      <button type="submit">Details</button>
                     </Link>
                   </td>
                 </tr>

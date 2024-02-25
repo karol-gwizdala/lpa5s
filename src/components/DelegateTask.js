@@ -7,6 +7,7 @@ export function DelegateTask() {
   const { auditId } = useParams();
 
   const roles = useLiveQuery(() => db.role.toArray());
+  const remarks = useLiveQuery(() => db.remark.toArray());
 
   const audits = useLiveQuery(() =>
     db.audit
@@ -31,7 +32,7 @@ export function DelegateTask() {
 
   async function addRemark() {
     try {
-      const id = await db.remark.add({
+      const id = await db.remark.put({
         auditId: auditId,
         auditRole,
         auditArea,
@@ -40,7 +41,7 @@ export function DelegateTask() {
         remarkRole,
         remarkDate,
         remark,
-        remarkComment: "com",
+        remarkComment: "",
       });
 
       console.log(`Item ${id} added to db`);
@@ -79,7 +80,9 @@ export function DelegateTask() {
         name="date"
         aria-label="Date"
       />
-      <button onClick={addRemark}>Add</button>
+      <button onClick={() => addRemark({ auditId: "3" })} type="submit">
+        Add
+      </button>
     </details>
   );
 }

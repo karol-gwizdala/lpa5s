@@ -1,6 +1,6 @@
 import { useLiveQuery } from "dexie-react-hooks";
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { db } from "../db";
 
 export const CompletedTaskDetails = () => {
@@ -17,8 +17,10 @@ export const CompletedTaskDetails = () => {
   return (
     <dialog open>
       <article>
-        <button disabled>Task Details:</button>
-        <table role="grid">
+        <button type="submit" disabled>
+          Task Details:
+        </button>
+        <table class="striped">
           <thead>
             <th>ID</th>
             <th>Remark</th>
@@ -38,6 +40,9 @@ export const CompletedTaskDetails = () => {
             })}
           </tbody>
         </table>
+        <Link to={"/completed"}>
+          <button class="secondary" type="submit">Back</button>
+        </Link>
       </article>
     </dialog>
   );

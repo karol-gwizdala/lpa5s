@@ -40,19 +40,23 @@ export const ExecuteTask = () => {
                   aria-label="Text"
                 />
               </p>
-
-              <Link to={"/completed"}>
-                <button
-                  onClick={() => {
-                    updateItemDb(item.id);
-                  }}
-                >
-                  Complete Task
-                </button>
-              </Link>
-              <Link to={"/todo"}>
-                <button class="secondary">Cancel</button>
-              </Link>
+              <div class="grid">
+                <Link to={"/todo"}>
+                  <button type="submit" class="secondary">
+                    Cancel
+                  </button>
+                </Link>
+                <Link to={"/completed"}>
+                  <button style={{backgroundColor: "#00895A", borderColor: "#00895A"}}
+                    type="submit"
+                    onClick={() => {
+                      updateItemDb(item.id);
+                    }}
+                  >
+                    Complete Task
+                  </button>
+                </Link>
+              </div>
             </div>
           );
         })}

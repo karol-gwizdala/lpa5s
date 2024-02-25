@@ -15,10 +15,14 @@ export const ConfirmModal = () => {
         <p>Do you want to complete this audit?</p>
         <footer>
           <Link to={"/todo"}>
-            <button onClick={() => updateItemDb(auditId * 1)}>Complete</button>
+            <button type="submit" onClick={() => updateItemDb(auditId * 1)}>
+              Complete
+            </button>
           </Link>
           <Link to={`/executeaudit/${auditId}`}>
-            <button class="secondary">Cancel</button>
+            <button type="submit" class="secondary">
+              Cancel
+            </button>
           </Link>
         </footer>
       </article>

@@ -17,6 +17,9 @@ import { Question5 } from "./components/Question5";
 import { CompletedDetails } from "./pages/CompletedDetails";
 import { ExecuteTask } from "./pages/ExecuteTask";
 import { CompletedTaskDetails } from "./pages/CompletedTaskDetails";
+import { DeleteModalQuestion } from "./components/DeleteModalQuestion";
+import { DeleteModalArea } from "./components/DeleteModalArea";
+import { DeleteModalRole } from "./components/DeleteModalRole";
 
 function App() {
   return (
@@ -35,6 +38,9 @@ function App() {
           <Route path="/completedtaskdetails/:auditId" element={<CompletedTaskDetails />} />
           <Route path="/executeaudit/confirmmodal/:auditId" element={<ConfirmModal />} />
           <Route path="/executeaudit/deletemodal/:auditId" element={<DeleteModal />} />
+          <Route path="/settings/deletemodalquestion/:auditId" element={<DeleteModalQuestion />} />
+          <Route path="/settings/deletemodalarea/:auditId" element={<DeleteModalArea />} />
+          <Route path="/settings/deletemodalrole/:auditId" element={<DeleteModalRole />} />
           <Route path="/executeaudit/question1/:auditId" element={<Question1 />} />
           <Route path="/executeaudit/question2/:auditId" element={<Question2 />} />
           <Route path="/executeaudit/question3/:auditId" element={<Question3 />} />

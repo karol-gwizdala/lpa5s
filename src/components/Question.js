@@ -1,6 +1,7 @@
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "../db";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export function Question() {
   const [question, setQuestion] = useState("");
@@ -21,13 +22,11 @@ export function Question() {
 
   const questions = useLiveQuery(() => db.question.toArray());
 
-  const removeItemFromDb = async (id) => {
-    await db.question.delete(id);
-  };
-
   return (
     <>
-      <button disabled>Question List:</button>
+      <button type="submit" disabled>
+        Question List
+      </button>
       <table role="grid">
         <thead>
           <th>ID</th>
@@ -41,23 +40,29 @@ export function Question() {
                 <td>{item.id}</td>
                 <td>{item.question}</td>
                 <td key={item.id}>
-                  <button class="secondary" onClick={() => removeItemFromDb(item.id)}>
-                    Delete
-                  </button>
+                  <Link to={`/settings/deletemodalquestion/${item.id}`}>
+                    <button
+                      type="submit"
+                      class="secondary"
+                    >
+                      ✗
+                    </button>
+                  </Link>
                 </td>
               </tr>
             );
           })}
         </tbody>
       </table>
-
-      <input
-        type="text"
-        value={question}
-        onChange={(event) => setQuestion(event.target.value)}
-        placeholder="New Question"
-      />
-      <button onClick={addQuestion}>Add</button>
+      <div role="group">
+        <input
+          type="text"
+          value={question}
+          onChange={(event) => setQuestion(event.target.value)}
+          placeholder="New Question"
+        />
+        <button onClick={addQuestion}>Add</button>
+      </div>
     </>
   );
 }

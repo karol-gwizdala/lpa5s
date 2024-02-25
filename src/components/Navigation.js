@@ -3,10 +3,10 @@ import { SelectedUser } from "./SelectedUser";
 
 export const Navigation = () => {
   return (
-    <nav className="container">
+    <nav class="container">
       <ul>
         <li>
-          <Link to="/">LPA5S</Link>
+          <Link to="/"><strong>LPA5S</strong></Link>
         </li>
       </ul>
       <ul>
@@ -22,7 +22,7 @@ export const Navigation = () => {
       </ul>
       <ul>
         <li>
-          <Link to="/settings">Settings</Link>
+          <Link to="/settings">⚙️</Link>
         </li>
         <li>
           <SelectedUser />

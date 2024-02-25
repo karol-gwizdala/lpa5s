@@ -30,7 +30,7 @@ export const Question1 = () => {
 
   return (
     <dialog open>
-      <article style={{width: 350}}>
+      <article>
         {audits?.map((item) => {
           return (
             <div>
@@ -57,13 +57,16 @@ export const Question1 = () => {
                 </select>
               </p>
               <DelegateTask />
-
-              <Link to={`/executeaudit/question2/${auditId}`}>
-                <button>Next</button>
-              </Link>
-              <Link to={"/todo"}>
-                <button class="secondary">Cancel</button>
-              </Link>
+              <div class="grid">
+                <Link to={"/todo"}>
+                  <button type="submit" class="secondary">
+                    Cancel
+                  </button>
+                </Link>
+                <Link to={`/executeaudit/question2/${auditId}`}>
+                  <button type="submit">Next</button>
+                </Link>
+              </div>
             </div>
           );
         })}

@@ -30,7 +30,7 @@ export const Question5 = () => {
 
   return (
     <dialog open>
-      <article style={{width: 350}}>
+      <article>
         {audits?.map((item) => {
           return (
             <div>
@@ -57,14 +57,18 @@ export const Question5 = () => {
 
                   <option>OK</option>
                 </select>
-                <DelegateTask />
               </p>
-              <Link to={`/executeaudit/confirmmodal/${auditId}`}>
-                <button>Complete Audit</button>
-              </Link>
-              <Link to={`/executeaudit/question4/${auditId}`}>
-                <button class="secondary">Back</button>
-              </Link>
+              <DelegateTask />
+              <div class="grid">
+                <Link to={`/executeaudit/question4/${auditId}`}>
+                  <button type="submit" class="secondary">
+                    Back
+                  </button>
+                </Link>
+                <Link to={`/executeaudit/confirmmodal/${auditId}`}>
+                  <button style={{backgroundColor: "#00895A", borderColor: "#00895A"}} type="submit">Complete Audit</button>
+                </Link>
+              </div>
             </div>
           );
         })}

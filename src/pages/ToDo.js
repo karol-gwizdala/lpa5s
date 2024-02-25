@@ -24,16 +24,17 @@ export const ToDo = () => {
   );
 
   return (
-    <div>
+    <div class="grid">
       <article>
-        <button disabled>Audit List [ To Do ]:</button>
-        <table role="grid">
+        <button type="submit" disabled>
+          Audit List [ To Do ]
+        </button>
+        <table class="striped">
           <thead>
             <th>ID</th>
             <th>Area</th>
             <th>Date</th>
-            <th>Execute</th>
-            <th>Delete</th>
+            <th>Execute | Delete</th>
           </thead>
           <tbody>
             {audits?.map((item) => {
@@ -42,15 +43,16 @@ export const ToDo = () => {
                   <td>{item.id}</td>
                   <td>{item.area}</td>
                   <td>{item.date}</td>
-                  <td key={item.id}>
-                    <Link to={`/executeaudit/question1/${item.id}`}>
-                      <button>Execute</button>
-                    </Link>
-                  </td>
                   <td>
-                    <Link to={`/executeaudit/deletemodal/${item.id}`}>
-                      <button class="secondary">Delete</button>
-                    </Link>
+                    <div class="grid">
+                      <Link to={`/executeaudit/question1/${item.id}`}>
+                        <button type="submit">✓</button>
+                      </Link>
+
+                      <Link to={`/executeaudit/deletemodal/${item.id}`}>
+                        <button type="submit" class="secondary">✗</button>
+                      </Link>
+                    </div>
                   </td>
                 </tr>
               );
@@ -59,8 +61,10 @@ export const ToDo = () => {
         </table>
       </article>
       <article>
-        <button disabled>Task List [ To Do ]:</button>
-        <table role="grid">
+        <button type="submit" disabled>
+          Task List [ To Do ]
+        </button>
+        <table class="striped">
           <thead>
             <th>ID</th>
             <th>Area</th>
@@ -76,7 +80,7 @@ export const ToDo = () => {
                   <td>{item.remarkDate}</td>
                   <td key={item.id}>
                     <Link to={`/executetask/${item.id}`}>
-                      <button>Execute</button>
+                      <button type="submit">✓</button>
                     </Link>
                   </td>
                 </tr>

@@ -120,14 +120,16 @@ export function AddAudit() {
             />
           </label>
 
-          <footer>
-            <div>
-              <Link to="/todo">
-                <button className="secondary">Cancel</button>
-              </Link>
-            </div>
+          <footer class="grid">
             <Link to="/todo">
-              <button onClick={addAudit}>Confirm</button>
+              <button type="submit" className="secondary">
+                Cancel
+              </button>
+            </Link>
+            <Link to="/todo">
+              <button type="submit" onClick={addAudit}>
+                Confirm
+              </button>
             </Link>
           </footer>
         </form>

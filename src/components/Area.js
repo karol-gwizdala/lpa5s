@@ -1,6 +1,7 @@
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "../db";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export function Area() {
   const [area, setArea] = useState("");
@@ -19,13 +20,11 @@ export function Area() {
 
   const areas = useLiveQuery(() => db.area.toArray());
 
-  const removeItemFromDb = async (id) => {
-    await db.area.delete(id);
-  };
-
   return (
     <>
-      <button disabled>Area List:</button>
+      <button type="submit" disabled>
+        Area List
+      </button>
       <table role="grid">
         <thead>
           <th>ID</th>
@@ -39,19 +38,18 @@ export function Area() {
                 <td>{item.id}</td>
                 <td>{item.area}</td>
                 <td key={item.id}>
-                  <button
-                    class="secondary"
-                    onClick={() => removeItemFromDb(item.id)}
-                  >
-                    Delete
-                  </button>
+                  <Link to={`/settings/deletemodalarea/${item.id}`}>
+                    <button type="submit" class="secondary">
+                      ✗
+                    </button>
+                  </Link>
                 </td>
               </tr>
             );
           })}
         </tbody>
       </table>
-      <div class="grid">
+      <div role="group">
         <input
           type="text"
           value={area}
@@ -60,7 +58,6 @@ export function Area() {
         />
         <button onClick={addArea}>Add</button>
       </div>
-      
     </>
   );
 }

@@ -1,6 +1,7 @@
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "../db";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export function Role() {
   const [role, setRole] = useState("");
@@ -18,13 +19,11 @@ export function Role() {
 
   const roles = useLiveQuery(() => db.role.toArray());
 
-  const removeItemFromDb = async (id) => {
-    await db.role.delete(id);
-  };
-
   return (
     <>
-      <button disabled>Role List:</button>
+      <button type="submit" disabled>
+        Role List
+      </button>
       <table role="grid">
         <thead>
           <th>ID</th>
@@ -38,23 +37,26 @@ export function Role() {
                 <td>{item.id}</td>
                 <td>{item.role}</td>
                 <td key={item.id}>
-                  <button class="secondary" onClick={() => removeItemFromDb(item.id)}>
-                    Delete
-                  </button>
+                  <Link to={`/settings/deletemodalrole/${item.id}`}>
+                    <button type="submit" class="secondary">
+                      ✗
+                    </button>
+                  </Link>
                 </td>
               </tr>
             );
           })}
         </tbody>
       </table>
-
-      <input
-        type="text"
-        value={role}
-        onChange={(event) => setRole(event.target.value)}
-        placeholder="New Role"
-      />
-      <button onClick={addRole}>Add</button>
+      <div role="group">
+        <input
+          type="text"
+          value={role}
+          onChange={(event) => setRole(event.target.value)}
+          placeholder="New Role"
+        />
+        <button onClick={addRole}>Add</button>
+      </div>
     </>
   );
 }
