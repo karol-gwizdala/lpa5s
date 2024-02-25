@@ -39,7 +39,10 @@ export function Area() {
                 <td>{item.id}</td>
                 <td>{item.area}</td>
                 <td key={item.id}>
-                  <button onClick={() => removeItemFromDb(item.id)}>
+                  <button
+                    class="secondary"
+                    onClick={() => removeItemFromDb(item.id)}
+                  >
                     Delete
                   </button>
                 </td>
@@ -48,15 +51,16 @@ export function Area() {
           })}
         </tbody>
       </table>
-
-      <input
-        type="text"
-        value={area}
-        onChange={(event) => setArea(event.target.value)}
-        placeholder="New Area"
-      />
-      <button onClick={addArea}>Add</button>
-      <button onClick={addArea}>Clear</button>
+      <div class="grid">
+        <input
+          type="text"
+          value={area}
+          onChange={(event) => setArea(event.target.value)}
+          placeholder="New Area"
+        />
+        <button onClick={addArea}>Add</button>
+      </div>
+      
     </>
   );
 }

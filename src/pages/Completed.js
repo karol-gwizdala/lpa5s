@@ -30,10 +30,8 @@ export const Completed = () => {
         <table role="grid">
           <thead>
             <th>ID</th>
-            <th>Role</th>
             <th>Area</th>
             <th>Date</th>
-            <th>Status</th>
             <th>Details</th>
           </thead>
           <tbody>
@@ -41,10 +39,8 @@ export const Completed = () => {
               return (
                 <tr key={item.id}>
                   <td>{item.id}</td>
-                  <td>{item.role}</td>
                   <td>{item.area}</td>
                   <td>{item.date}</td>
-                  <td>{item.auditStatus}</td>
                   <td key={item.id}>
                     <Link to={`/completeddetails/${item.id}`}>
                       <button>Details</button>
@@ -61,10 +57,8 @@ export const Completed = () => {
         <table role="grid">
           <thead>
             <th>ID</th>
-            <th>Role</th>
             <th>Area</th>
             <th>Date</th>
-            <th>Status</th>
             <th>Details</th>
           </thead>
           <tbody>
@@ -72,10 +66,8 @@ export const Completed = () => {
               return (
                 <tr>
                   <td>{item.id}</td>
-                  <td>{item.remarkRole}</td>
                   <td>{item.auditArea}</td>
                   <td>{item.remarkDate}</td>
-                  <td>{item.remarkStatus}</td>
                   <td key={item.id}>
                     <Link to={`/completedtaskdetails/${item.id}`}>
                       <button>Details</button>

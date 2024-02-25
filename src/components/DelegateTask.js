@@ -49,8 +49,6 @@ export function DelegateTask() {
     }
   }
 
-  const remarks = useLiveQuery(() => db.remark.toArray());
-
   return (
     <details>
       <summary role="button">Delegate Task</summary>

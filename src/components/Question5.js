@@ -30,7 +30,7 @@ export const Question5 = () => {
 
   return (
     <dialog open>
-      <article>
+      <article style={{width: 350}}>
         {audits?.map((item) => {
           return (
             <div>

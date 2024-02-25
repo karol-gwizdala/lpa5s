@@ -41,7 +41,7 @@ export function Question() {
                 <td>{item.id}</td>
                 <td>{item.question}</td>
                 <td key={item.id}>
-                  <button onClick={() => removeItemFromDb(item.id)}>
+                  <button class="secondary" onClick={() => removeItemFromDb(item.id)}>
                     Delete
                   </button>
                 </td>

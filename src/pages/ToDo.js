@@ -30,10 +30,8 @@ export const ToDo = () => {
         <table role="grid">
           <thead>
             <th>ID</th>
-            <th>Role</th>
             <th>Area</th>
             <th>Date</th>
-            <th>Status</th>
             <th>Execute</th>
             <th>Delete</th>
           </thead>
@@ -42,10 +40,8 @@ export const ToDo = () => {
               return (
                 <tr key={item.id}>
                   <td>{item.id}</td>
-                  <td>{item.role}</td>
                   <td>{item.area}</td>
                   <td>{item.date}</td>
-                  <td>{item.auditStatus}</td>
                   <td key={item.id}>
                     <Link to={`/executeaudit/question1/${item.id}`}>
                       <button>Execute</button>
@@ -67,10 +63,8 @@ export const ToDo = () => {
         <table role="grid">
           <thead>
             <th>ID</th>
-            <th>Role</th>
             <th>Area</th>
             <th>Date</th>
-            <th>Status</th>
             <th>Execute</th>
           </thead>
           <tbody>
@@ -78,10 +72,8 @@ export const ToDo = () => {
               return (
                 <tr>
                   <td>{item.id}</td>
-                  <td>{item.remarkRole}</td>
                   <td>{item.auditArea}</td>
                   <td>{item.remarkDate}</td>
-                  <td>{item.remarkStatus}</td>
                   <td key={item.id}>
                     <Link to={`/executetask/${item.id}`}>
                       <button>Execute</button>

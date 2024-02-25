@@ -9,7 +9,7 @@ export const CompletedDetails = () => {
   const audits = useLiveQuery(() =>
     db.audit
       .where("auditStatus")
-      .equals("Completed")
+      .equals("Completed (Audit)")
       .and((item) => item.id === auditId * 1)
       .toArray()
   );

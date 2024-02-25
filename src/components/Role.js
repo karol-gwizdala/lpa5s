@@ -38,7 +38,7 @@ export function Role() {
                 <td>{item.id}</td>
                 <td>{item.role}</td>
                 <td key={item.id}>
-                  <button onClick={() => removeItemFromDb(item.id)}>
+                  <button class="secondary" onClick={() => removeItemFromDb(item.id)}>
                     Delete
                   </button>
                 </td>
