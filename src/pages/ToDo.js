@@ -12,7 +12,7 @@ export const ToDo = () => {
       .where("auditStatus")
       .equals("To Do (Audit)")
       .and((item) => item.role === userRole)
-      .toArray()
+      .sortBy("date")
   );
 
   const remarks = useLiveQuery(() =>
@@ -20,20 +20,20 @@ export const ToDo = () => {
       .where("remarkStatus")
       .equals("To Do (Task)")
       .and((item) => item.remarkRole === userRole)
-      .toArray()
+      .sortBy("remarkDate")
   );
 
   return (
     <div class="grid">
       <article>
-        <button type="submit" disabled>
+        <button style={{backgroundColor: "#D93526", borderColor: "#D93526"}} type="submit" disabled>
           Audit List [ To Do ]
         </button>
         <table class="striped">
           <thead>
             <th>ID</th>
             <th>Area</th>
-            <th>Date</th>
+            <th>Date↓</th>
             <th>Execute | Delete</th>
           </thead>
           <tbody>
@@ -61,14 +61,14 @@ export const ToDo = () => {
         </table>
       </article>
       <article>
-        <button type="submit" disabled>
+        <button style={{backgroundColor: "#D93526", borderColor: "#D93526"}} type="submit" disabled>
           Task List [ To Do ]
         </button>
         <table class="striped">
           <thead>
             <th>ID</th>
             <th>Area</th>
-            <th>Date</th>
+            <th>Date↓</th>
             <th>Execute</th>
           </thead>
           <tbody>

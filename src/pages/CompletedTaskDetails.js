@@ -23,6 +23,7 @@ export const CompletedTaskDetails = () => {
         <table class="striped">
           <thead>
             <th>ID</th>
+            <th>Audit ID</th>
             <th>Remark</th>
             <th>Comment</th>
             <th>Date</th>
@@ -32,6 +33,7 @@ export const CompletedTaskDetails = () => {
               return (
                 <tr>
                   <td>{item.id}</td>
+                  <td>{item.auditId}</td>
                   <td>{item.remark}</td>
                   <td>{item.remarkComment}</td>
                   <td>{item.remarkDate}</td>

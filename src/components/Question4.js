@@ -1,11 +1,14 @@
 import { useLiveQuery } from "dexie-react-hooks";
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { db } from "../db";
-import { DelegateTask } from "./DelegateTask";
 
 export const Question4 = () => {
   const { auditId } = useParams();
+  const navigate = useNavigate();
+  const [userQuestionStatus, setUserQuestionStatus] = useState("-");
+  const [answerStatus, setAnswerStatus] = useState("");
+  const [answerDelegateStatus, setAnswerDelegateStatus] = useState("disabled");
 
   const audits = useLiveQuery(() =>
     db.audit
@@ -18,15 +21,15 @@ export const Question4 = () => {
     await db.audit.update(id, { question4Status: userQuestionStatus });
   };
 
-  const [userQuestionStatus, setUserQuestionStatus] = useState("-");
-  const [answerStatus, setAnswerStatus] = useState("");
   useEffect(() => {
     if (userQuestionStatus === "OK") {
       setAnswerStatus("false");
+      setAnswerDelegateStatus("disabled");
     } else if (userQuestionStatus === "NOK") {
       setAnswerStatus("true");
+      setAnswerDelegateStatus("");
     }
-  }, [userQuestionStatus, answerStatus]);
+  }, [userQuestionStatus, answerStatus, answerDelegateStatus]);
 
   return (
     <dialog open>
@@ -52,13 +55,23 @@ export const Question4 = () => {
                   <option value="-" disabled selected>
                     -
                   </option>
-
                   <option>NOK</option>
-
                   <option>OK</option>
                 </select>
               </p>
-              <DelegateTask />
+
+              <button
+                style={{ backgroundColor: "#D93526", borderColor: "#D93526" }}
+                type="submit"
+                class="secondary"
+                disabled={answerDelegateStatus}
+                onClick={() => {
+                  navigate(`/executeaudit/question4/delegatetask/${auditId}`);
+                }}
+              >
+                Delegate Task
+              </button>
+
               <div class="grid">
                 <Link to={`/executeaudit/question3/${auditId}`}>
                   <button type="submit" class="secondary">

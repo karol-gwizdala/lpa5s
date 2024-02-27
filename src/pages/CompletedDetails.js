@@ -25,7 +25,6 @@ export const CompletedDetails = () => {
             <th>#</th>
             <th>Question</th>
             <th>Status</th>
-            <th>Remark</th>
           </thead>
           <tbody>
             {audits?.map((item) => {
@@ -34,7 +33,6 @@ export const CompletedDetails = () => {
                   <td>1</td>
                   <td>{item.question1}</td>
                   <td>{item.question1Status}</td>
-                  <td>{item.question1Remark}</td>
                 </tr>
               );
             })}
@@ -44,7 +42,6 @@ export const CompletedDetails = () => {
                   <td>2</td>
                   <td>{item.question2}</td>
                   <td>{item.question2Status}</td>
-                  <td>{item.question2Remark}</td>
                 </tr>
               );
             })}
@@ -54,7 +51,6 @@ export const CompletedDetails = () => {
                   <td>3</td>
                   <td>{item.question3}</td>
                   <td>{item.question3Status}</td>
-                  <td>{item.question3Remark}</td>
                 </tr>
               );
             })}
@@ -64,7 +60,6 @@ export const CompletedDetails = () => {
                   <td>4</td>
                   <td>{item.question4}</td>
                   <td>{item.question4Status}</td>
-                  <td>{item.question4Remark}</td>
                 </tr>
               );
             })}
@@ -74,7 +69,6 @@ export const CompletedDetails = () => {
                   <td>5</td>
                   <td>{item.question5}</td>
                   <td>{item.question5Status}</td>
-                  <td>{item.question5Remark}</td>
                 </tr>
               );
             })}

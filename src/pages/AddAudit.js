@@ -34,7 +34,6 @@ export function AddAudit() {
   const [date, setDate] = useState("");
   const auditStatus = "To Do (Audit)";
   const questionStatus = "-";
-  const questionRemark = "";
   const question1 = arrayQuestionRandom[0];
   const question2 = arrayQuestionRandom[1];
   const question3 = arrayQuestionRandom[2];
@@ -58,11 +57,6 @@ export function AddAudit() {
         question3Status: questionStatus,
         question4Status: questionStatus,
         question5Status: questionStatus,
-        question1Remark: questionRemark,
-        question2Remark: questionRemark,
-        question3Remark: questionRemark,
-        question4Remark: questionRemark,
-        question5Remark: questionRemark,
       });
 
       console.log(`Item ${id} added to db`);

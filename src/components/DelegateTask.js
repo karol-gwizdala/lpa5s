@@ -1,13 +1,13 @@
 import { useLiveQuery } from "dexie-react-hooks";
 import React, { useState } from "react";
 import { db } from "../db";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export function DelegateTask() {
   const { auditId } = useParams();
+  const navigate = useNavigate();
 
   const roles = useLiveQuery(() => db.role.toArray());
-  const remarks = useLiveQuery(() => db.remark.toArray());
 
   const audits = useLiveQuery(() =>
     db.audit
@@ -32,7 +32,7 @@ export function DelegateTask() {
 
   async function addRemark() {
     try {
-      const id = await db.remark.put({
+      const id = await db.remark.add({
         auditId: auditId,
         auditRole,
         auditArea,
@@ -51,38 +51,58 @@ export function DelegateTask() {
   }
 
   return (
-    <details>
-      <summary role="button">Delegate Task</summary>
-      <input
-        value={remark}
-        onChange={(event) => setRemark(event.target.value)}
-        type="text"
-        name="text"
-        placeholder="Remark"
-        aria-label="Text"
-      />
-      <select
-        value={remarkRole}
-        onChange={(event) => setRemarkRole(event.target.value)}
-      >
-        <option value="" disabled selected>
-          Responsible
-        </option>
-        {roles?.map((item) => {
-          return <option>{item.role}</option>;
-        })}
-      </select>
+    <dialog open>
+      <article>
+        <h3>Delegate Task</h3>
+        <input
+          value={remark}
+          onChange={(event) => setRemark(event.target.value)}
+          type="text"
+          name="text"
+          placeholder="Remark"
+          aria-label="Text"
+        />
+        <select
+          value={remarkRole}
+          onChange={(event) => setRemarkRole(event.target.value)}
+        >
+          <option value="" disabled selected>
+            Responsible
+          </option>
+          {roles?.map((item) => {
+            return <option>{item.role}</option>;
+          })}
+        </select>
 
-      <input
-        value={remarkDate}
-        onChange={(event) => setRemarkDate(event.target.value)}
-        type="date"
-        name="date"
-        aria-label="Date"
-      />
-      <button onClick={() => addRemark({ auditId: "3" })} type="submit">
-        Add
-      </button>
-    </details>
+        <input
+          value={remarkDate}
+          onChange={(event) => setRemarkDate(event.target.value)}
+          type="date"
+          name="date"
+          aria-label="Date"
+        />
+        <div class="grid">
+          <button
+            type="submit"
+            class="secondary"
+            onClick={() => {
+              navigate(-1);
+            }}
+          >
+            Cancel
+          </button>
+          <button
+            style={{ backgroundColor: "#00895A", borderColor: "#00895A" }}
+            onClick={() => {
+              navigate(-1);
+              addRemark();
+            }}
+            type="submit"
+          >
+            Add Task
+          </button>
+        </div>
+      </article>
+    </dialog>
   );
 }

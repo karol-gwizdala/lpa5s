@@ -20,6 +20,8 @@ import { CompletedTaskDetails } from "./pages/CompletedTaskDetails";
 import { DeleteModalQuestion } from "./components/DeleteModalQuestion";
 import { DeleteModalArea } from "./components/DeleteModalArea";
 import { DeleteModalRole } from "./components/DeleteModalRole";
+import { DelegateTask } from "./components/DelegateTask";
+import { AddAuditModal } from "./pages/AddAuditModal";
 
 function App() {
   return (
@@ -29,6 +31,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/addaudit" element={<AddAudit />} />
+          <Route path="/addauditmodal" element={<AddAuditModal />} />
           <Route path="/todo" element={<ToDo />} />
           <Route path="/completed" element={<Completed />} />
           <Route path="/settings" element={<Settings />} />
@@ -46,6 +49,11 @@ function App() {
           <Route path="/executeaudit/question3/:auditId" element={<Question3 />} />
           <Route path="/executeaudit/question4/:auditId" element={<Question4 />} />
           <Route path="/executeaudit/question5/:auditId" element={<Question5 />} />
+          <Route path="/executeaudit/question1/delegatetask/:auditId" element={<DelegateTask />} />
+          <Route path="/executeaudit/question2/delegatetask/:auditId" element={<DelegateTask />} />
+          <Route path="/executeaudit/question3/delegatetask/:auditId" element={<DelegateTask />} />
+          <Route path="/executeaudit/question4/delegatetask/:auditId" element={<DelegateTask />} />
+          <Route path="/executeaudit/question5/delegatetask/:auditId" element={<DelegateTask />} />
         </Routes>
       </main>
     </>

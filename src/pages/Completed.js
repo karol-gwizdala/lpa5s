@@ -12,7 +12,7 @@ export const Completed = () => {
       .where("auditStatus")
       .equals("Completed (Audit)")
       .and((item) => item.role === userRole)
-      .toArray()
+      .sortBy("date")
   );
 
   const remarks = useLiveQuery(() =>
@@ -20,18 +20,18 @@ export const Completed = () => {
       .where("remarkStatus")
       .equals("Completed (Task)")
       .and((item) => item.remarkRole === userRole)
-      .toArray()
+      .sortBy("remarkDate")
   );
 
   return (
     <div class="grid">
       <article>
-        <button type="submit" disabled>Audit List [ Completed ]</button>
+        <button style={{backgroundColor: "#00895A", borderColor: "#00895A"}} type="submit" disabled>Audit List [ Completed ]</button>
         <table class="striped">
           <thead>
             <th>ID</th>
             <th>Area</th>
-            <th>Date</th>
+            <th>Date↓</th>
             <th>Details</th>
           </thead>
           <tbody>
@@ -53,12 +53,12 @@ export const Completed = () => {
         </table>
       </article>
       <article>
-        <button type="submit" disabled>Task List [ Completed ]</button>
+        <button style={{backgroundColor: "#00895A", borderColor: "#00895A"}} type="submit" disabled>Task List [ Completed ]</button>
         <table class="striped">
           <thead>
             <th>ID</th>
             <th>Area</th>
-            <th>Date</th>
+            <th>Date↓</th>
             <th>Details</th>
           </thead>
           <tbody>

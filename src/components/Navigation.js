@@ -6,23 +6,31 @@ export const Navigation = () => {
     <nav class="container">
       <ul>
         <li>
-          <Link to="/"><strong>LPA5S</strong></Link>
+          <Link to="/">
+            <strong>LPA5S</strong>
+          </Link>
         </li>
       </ul>
       <ul>
         <li>
-          <Link to="/addaudit">New Audit</Link>
+          <Link to="/addauditmodal">New Audit</Link>
+        </li>
+        <li hover>
+          <Link to="/todo" style={{ color: "#D93526"}}>
+            ToDo
+          </Link>
         </li>
         <li>
-          <Link to="/todo">ToDo</Link>
-        </li>
-        <li>
-          <Link to="/completed">Completed</Link>
+          <Link to="/completed" style={{ color: "#00895A" }}>
+            Completed
+          </Link>
         </li>
       </ul>
       <ul>
         <li>
-          <Link to="/settings">⚙️</Link>
+          <Link to="/settings" data-tooltip="Settings" data-placement="left">
+            ⚙️
+          </Link>
         </li>
         <li>
           <SelectedUser />
