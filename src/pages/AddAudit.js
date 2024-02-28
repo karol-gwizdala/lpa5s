@@ -1,6 +1,6 @@
 import { useLiveQuery } from "dexie-react-hooks";
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { db } from "../db";
 
 export function AddAudit() {
