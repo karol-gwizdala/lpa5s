@@ -1,13 +1,10 @@
 {
   "files": {
-    "main.css": "/lpa5s/static/css/main.47447801.css",
     "main.js": "/lpa5s/static/js/main.006b7fe6.js",
     "index.html": "/lpa5s/index.html",
-    "main.47447801.css.map": "/lpa5s/static/css/main.47447801.css.map",
     "main.006b7fe6.js.map": "/lpa5s/static/js/main.006b7fe6.js.map"
   },
   "entrypoints": [
-    "static/css/main.47447801.css",
     "static/js/main.006b7fe6.js"
   ]
 }
