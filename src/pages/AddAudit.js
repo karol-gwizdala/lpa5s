@@ -74,37 +74,36 @@ export function AddAudit() {
         <form>
           <h2>Create New Audit</h2>
           <label>
-            Role:
             <select
               value={role}
+              name="role"
               onChange={(event) => setRole(event.target.value)}
             >
-              <option value="" disabled selected>
-                Select
+              <option value="" disabled>
+                Layer
               </option>
               {roles?.map((item) => {
-                return <option>{item.role}</option>;
+                return <option key={item.id}>{item.role}</option>;
               })}
             </select>
           </label>
 
           <label>
-            Area:
             <select
               value={area}
+              name="area"
               onChange={(event) => setArea(event.target.value)}
             >
-              <option value="" disabled selected>
-                Select
+              <option value="" disabled>
+                Area
               </option>
               {areas?.map((item) => {
-                return <option>{item.area}</option>;
+                return <option key={item.id}>{item.area}</option>;
               })}
             </select>
           </label>
 
           <label>
-            Date:
             <input
               value={date}
               onChange={(event) => setDate(event.target.value)}
@@ -114,7 +113,7 @@ export function AddAudit() {
             />
           </label>
 
-          <footer class="grid">
+          <footer className="grid">
             <Link to="/todo">
               <button type="submit" className="secondary">
                 Cancel

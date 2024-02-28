@@ -25,7 +25,7 @@ export const ExecuteTask = () => {
       <article>
         {remarks?.map((item) => {
           return (
-            <div>
+            <div key={item.id}>
               <h3>Remark</h3>
               <p>{item.remark}</p>
               <p>
@@ -40,9 +40,9 @@ export const ExecuteTask = () => {
                   aria-label="Text"
                 />
               </p>
-              <div class="grid">
+              <div className="grid">
                 <Link to={"/todo"}>
-                  <button type="submit" class="secondary">
+                  <button type="submit" className="secondary">
                     Cancel
                   </button>
                 </Link>

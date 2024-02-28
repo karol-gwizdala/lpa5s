@@ -20,7 +20,7 @@ export const ConfirmModal = () => {
             </button>
           </Link>
           <Link to={`/executeaudit/${auditId}`}>
-            <button type="submit" class="secondary">
+            <button type="submit" className="secondary">
               Cancel
             </button>
           </Link>

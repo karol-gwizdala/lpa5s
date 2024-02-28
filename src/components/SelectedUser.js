@@ -11,16 +11,17 @@ export const SelectedUser = () => {
   return (
     <select
       value={userRole}
+      name="userRole"
       onChange={(event) => {
         setUserRole(event.target.value);
         navigate("/");
       }}
     >
-      <option value="" disabled selected>
+      <option value="" disabled>
         User
       </option>
-      {roles?.map((role) => {
-        return <option>{role.role}</option>;
+      {roles?.map((item) => {
+        return <option key={item.id}>{item.role}</option>;
       })}
     </select>
   );

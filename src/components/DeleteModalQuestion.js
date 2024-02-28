@@ -13,9 +13,9 @@ export const DeleteModalQuestion = () => {
       <article>
         <h3>Delete Confirmation</h3>
         <p>Do you want to delete this question?</p>
-        <footer class="grid">
+        <footer className="grid">
           <Link to={"/settings"}>
-            <button class="secondary" type="submit">
+            <button className="secondary" type="submit">
               Cancel
             </button>
           </Link>

@@ -27,19 +27,21 @@ export function Area() {
       </button>
       <table role="grid">
         <thead>
-          <th>ID</th>
-          <th>Area</th>
-          <th>Delete</th>
+          <tr>
+            <th>ID</th>
+            <th>Area</th>
+            <th>Delete</th>
+          </tr>
         </thead>
         <tbody>
           {areas?.map((item) => {
             return (
-              <tr>
+              <tr key={item.id}>
                 <td>{item.id}</td>
                 <td>{item.area}</td>
                 <td key={item.id}>
                   <Link to={`/settings/deletemodalarea/${item.id}`}>
-                    <button type="submit" class="secondary">
+                    <button type="submit" className="secondary">
                       ✗
                     </button>
                   </Link>
@@ -52,6 +54,7 @@ export function Area() {
       <div role="group">
         <input
           type="text"
+          name="area"
           value={area}
           onChange={(event) => setArea(event.target.value)}
           placeholder="New Area"

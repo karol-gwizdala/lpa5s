@@ -6,13 +6,15 @@ import { Question } from "../components/Question";
 export const Settings = () => {
   return (
     <>
-      <div class="grid">
+      <div className="grid">
         <article>
           <Role />
         </article>
         <article>
           <Area />
         </article>
+      </div>
+      <div>
         <article>
           <Question />
         </article>

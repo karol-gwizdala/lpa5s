@@ -20,18 +20,20 @@ export const CompletedTaskDetails = () => {
         <button type="submit" disabled>
           Task Details:
         </button>
-        <table class="striped">
+        <table className="striped">
           <thead>
-            <th>ID</th>
-            <th>Audit ID</th>
-            <th>Remark</th>
-            <th>Comment</th>
-            <th>Date</th>
+            <tr>
+              <th>ID</th>
+              <th>Audit ID</th>
+              <th>Remark</th>
+              <th>Comment</th>
+              <th>Date</th>
+            </tr>
           </thead>
           <tbody>
             {remarks?.map((item) => {
               return (
-                <tr>
+                <tr key={item.id}>
                   <td>{item.id}</td>
                   <td>{item.auditId}</td>
                   <td>{item.remark}</td>
@@ -43,7 +45,9 @@ export const CompletedTaskDetails = () => {
           </tbody>
         </table>
         <Link to={"/completed"}>
-          <button class="secondary" type="submit">Back</button>
+          <button className="secondary" type="submit">
+            Back
+          </button>
         </Link>
       </article>
     </dialog>

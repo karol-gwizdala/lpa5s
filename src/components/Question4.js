@@ -36,7 +36,7 @@ export const Question4 = () => {
       <article>
         {audits?.map((item) => {
           return (
-            <div>
+            <div key={item.id}>
               <progress value="80" max="100" />
               <h3>Question 4</h3>
               <p>{item.question4}</p>
@@ -52,7 +52,7 @@ export const Question4 = () => {
                   required
                   aria-invalid={answerStatus}
                 >
-                  <option value="-" disabled selected>
+                  <option value="-" disabled>
                     -
                   </option>
                   <option>NOK</option>
@@ -63,7 +63,7 @@ export const Question4 = () => {
               <button
                 style={{ backgroundColor: "#D93526", borderColor: "#D93526" }}
                 type="submit"
-                class="secondary"
+                className="secondary"
                 disabled={answerDelegateStatus}
                 onClick={() => {
                   navigate(`/executeaudit/question4/delegatetask/${auditId}`);
@@ -72,9 +72,9 @@ export const Question4 = () => {
                 Delegate Task
               </button>
 
-              <div class="grid">
+              <div className="grid">
                 <Link to={`/executeaudit/question3/${auditId}`}>
-                  <button type="submit" class="secondary">
+                  <button type="submit" className="secondary">
                     Back
                   </button>
                 </Link>

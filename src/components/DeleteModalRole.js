@@ -12,10 +12,10 @@ export const DeleteModalRole = () => {
     <dialog open>
       <article>
         <h3>Delete Confirmation</h3>
-        <p>Do you want to delete this role?</p>
-        <footer class="grid">
+        <p>Do you want to delete this layer?</p>
+        <footer className="grid">
           <Link to={"/settings"}>
-            <button class="secondary" type="submit">
+            <button className="secondary" type="submit">
               Cancel
             </button>
           </Link>

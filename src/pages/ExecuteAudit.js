@@ -47,7 +47,7 @@ export const ExecuteAudit = () => {
         <button>Complete Audit</button>
       </Link>
       <Link to={`/executeaudit/deletemodal/${auditId}`}>
-        <button class="secondary">Delete</button>
+        <button className="secondary">Delete</button>
       </Link>
     </div>
   );

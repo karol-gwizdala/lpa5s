@@ -29,21 +29,23 @@ export function Question() {
       </button>
       <table role="grid">
         <thead>
+          <tr>
           <th>ID</th>
           <th>Question</th>
           <th>Delete</th>
+          </tr>
         </thead>
         <tbody>
           {questions?.map((item) => {
             return (
-              <tr>
+              <tr key={item.id}>
                 <td>{item.id}</td>
                 <td>{item.question}</td>
                 <td key={item.id}>
                   <Link to={`/settings/deletemodalquestion/${item.id}`}>
                     <button
                       type="submit"
-                      class="secondary"
+                      className="secondary"
                     >
                       ✗
                     </button>
@@ -57,6 +59,7 @@ export function Question() {
       <div role="group">
         <input
           type="text"
+          name="question"
           value={question}
           onChange={(event) => setQuestion(event.target.value)}
           placeholder="New Question"

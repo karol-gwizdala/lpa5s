@@ -64,13 +64,14 @@ export function DelegateTask() {
         />
         <select
           value={remarkRole}
+          name="remarkRole"
           onChange={(event) => setRemarkRole(event.target.value)}
         >
-          <option value="" disabled selected>
+          <option value="" disabled>
             Responsible
           </option>
           {roles?.map((item) => {
-            return <option>{item.role}</option>;
+            return <option key={item.id}>{item.role}</option>;
           })}
         </select>
 
@@ -81,10 +82,10 @@ export function DelegateTask() {
           name="date"
           aria-label="Date"
         />
-        <div class="grid">
+        <div className="grid">
           <button
             type="submit"
-            class="secondary"
+            className="secondary"
             onClick={() => {
               navigate(-1);
             }}

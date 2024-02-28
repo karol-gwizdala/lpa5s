@@ -24,17 +24,23 @@ export const ToDo = () => {
   );
 
   return (
-    <div class="grid">
+    <div className="grid">
       <article>
-        <button style={{backgroundColor: "#D93526", borderColor: "#D93526"}} type="submit" disabled>
+        <button
+          style={{ backgroundColor: "#D93526", borderColor: "#D93526" }}
+          type="submit"
+          disabled
+        >
           Audit List [ To Do ]
         </button>
-        <table class="striped">
+        <table className="striped">
           <thead>
-            <th>ID</th>
-            <th>Area</th>
-            <th>Date↓</th>
-            <th>Execute | Delete</th>
+            <tr>
+              <th>ID</th>
+              <th>Area</th>
+              <th>Date↓</th>
+              <th>Execute | Delete</th>
+            </tr>
           </thead>
           <tbody>
             {audits?.map((item) => {
@@ -44,13 +50,15 @@ export const ToDo = () => {
                   <td>{item.area}</td>
                   <td>{item.date}</td>
                   <td>
-                    <div class="grid">
+                    <div className="grid">
                       <Link to={`/executeaudit/question1/${item.id}`}>
                         <button type="submit">✓</button>
                       </Link>
 
                       <Link to={`/executeaudit/deletemodal/${item.id}`}>
-                        <button type="submit" class="secondary">✗</button>
+                        <button disabled="" type="submit" className="secondary">
+                          ✗
+                        </button>
                       </Link>
                     </div>
                   </td>
@@ -61,20 +69,26 @@ export const ToDo = () => {
         </table>
       </article>
       <article>
-        <button style={{backgroundColor: "#D93526", borderColor: "#D93526"}} type="submit" disabled>
+        <button
+          style={{ backgroundColor: "#D93526", borderColor: "#D93526" }}
+          type="submit"
+          disabled
+        >
           Task List [ To Do ]
         </button>
-        <table class="striped">
+        <table className="striped">
           <thead>
-            <th>ID</th>
-            <th>Area</th>
-            <th>Date↓</th>
-            <th>Execute</th>
+            <tr>
+              <th>ID</th>
+              <th>Area</th>
+              <th>Date↓</th>
+              <th>Execute</th>
+            </tr>
           </thead>
           <tbody>
             {remarks?.map((item) => {
               return (
-                <tr>
+                <tr key={item.id}>
                   <td>{item.id}</td>
                   <td>{item.auditArea}</td>
                   <td>{item.remarkDate}</td>

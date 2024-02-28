@@ -3,7 +3,7 @@ import { SelectedUser } from "./SelectedUser";
 
 export const Navigation = () => {
   return (
-    <nav class="container">
+    <nav className="container">
       <ul>
         <li>
           <Link to="/">
@@ -15,8 +15,8 @@ export const Navigation = () => {
         <li>
           <Link to="/addauditmodal">New Audit</Link>
         </li>
-        <li hover>
-          <Link to="/todo" style={{ color: "#D93526"}}>
+        <li>
+          <Link to="/todo" style={{ color: "#D93526" }}>
             ToDo
           </Link>
         </li>

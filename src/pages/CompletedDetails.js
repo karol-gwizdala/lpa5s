@@ -20,16 +20,18 @@ export const CompletedDetails = () => {
         <button type="submit" disabled>
           Audit Details:
         </button>
-        <table class="striped">
+        <table className="striped">
           <thead>
-            <th>#</th>
-            <th>Question</th>
-            <th>Status</th>
+            <tr>
+              <th>#</th>
+              <th>Question</th>
+              <th>Status</th>
+            </tr>
           </thead>
           <tbody>
             {audits?.map((item) => {
               return (
-                <tr>
+                <tr key={item.id}>
                   <td>1</td>
                   <td>{item.question1}</td>
                   <td>{item.question1Status}</td>
@@ -38,7 +40,7 @@ export const CompletedDetails = () => {
             })}
             {audits?.map((item) => {
               return (
-                <tr>
+                <tr key={item.id}>
                   <td>2</td>
                   <td>{item.question2}</td>
                   <td>{item.question2Status}</td>
@@ -47,7 +49,7 @@ export const CompletedDetails = () => {
             })}
             {audits?.map((item) => {
               return (
-                <tr>
+                <tr key={item.id}>
                   <td>3</td>
                   <td>{item.question3}</td>
                   <td>{item.question3Status}</td>
@@ -56,7 +58,7 @@ export const CompletedDetails = () => {
             })}
             {audits?.map((item) => {
               return (
-                <tr>
+                <tr key={item.id}>
                   <td>4</td>
                   <td>{item.question4}</td>
                   <td>{item.question4Status}</td>
@@ -65,7 +67,7 @@ export const CompletedDetails = () => {
             })}
             {audits?.map((item) => {
               return (
-                <tr>
+                <tr key={item.id}>
                   <td>5</td>
                   <td>{item.question5}</td>
                   <td>{item.question5Status}</td>
@@ -75,7 +77,7 @@ export const CompletedDetails = () => {
           </tbody>
         </table>
         <Link to={"/completed"}>
-          <button class="secondary" type="submit">
+          <button className="secondary" type="submit">
             Back
           </button>
         </Link>

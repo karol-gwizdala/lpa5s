@@ -22,23 +22,25 @@ export function Role() {
   return (
     <>
       <button type="submit" disabled>
-        Role List
+        Layer List
       </button>
       <table role="grid">
         <thead>
-          <th>ID</th>
-          <th>Role</th>
-          <th>Delete</th>
+          <tr>
+            <th>ID</th>
+            <th>Layer</th>
+            <th>Delete</th>
+          </tr>
         </thead>
         <tbody>
           {roles?.map((item) => {
             return (
-              <tr>
+              <tr key={item.id}>
                 <td>{item.id}</td>
                 <td>{item.role}</td>
                 <td key={item.id}>
                   <Link to={`/settings/deletemodalrole/${item.id}`}>
-                    <button type="submit" class="secondary">
+                    <button type="submit" className="secondary">
                       ✗
                     </button>
                   </Link>
@@ -51,9 +53,10 @@ export function Role() {
       <div role="group">
         <input
           type="text"
+          name="role"
           value={role}
           onChange={(event) => setRole(event.target.value)}
-          placeholder="New Role"
+          placeholder="New Layer"
         />
         <button onClick={addRole}>Add</button>
       </div>
