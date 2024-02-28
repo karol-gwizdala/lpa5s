@@ -1,9 +1,11 @@
 import { useLiveQuery } from "dexie-react-hooks";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { db } from "../db";
 
 export function AddAudit() {
+  const navigate = useNavigate();
+
   const questions = useLiveQuery(() => db.question.toArray());
   const questionsMapLength = questions?.map((item) => item.question).length;
 
@@ -114,11 +116,16 @@ export function AddAudit() {
           </label>
 
           <footer className="grid">
-            <Link to="/todo">
-              <button type="submit" className="secondary">
-                Cancel
-              </button>
-            </Link>
+            <button
+              onClick={() => {
+                navigate(-1);
+              }}
+              type="submit"
+              className="secondary"
+            >
+              Cancel
+            </button>
+
             <Link to="/todo">
               <button type="submit" onClick={addAudit}>
                 Confirm
