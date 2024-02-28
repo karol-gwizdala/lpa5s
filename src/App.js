@@ -1,4 +1,3 @@
-import "@picocss/pico"
 import { Navigation } from "./components/Navigation";
 import { Home } from "./pages/Home";
 import { ToDo } from "./pages/ToDo";

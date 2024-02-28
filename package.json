@@ -4,7 +4,7 @@
   "homepage": "https://karol-gwizdala.github.io/lpa5s",
   "private": true,
   "dependencies": {
-    "@picocss/pico": "^1.5.12",
+    "@picocss/pico": "^2.0.3",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
