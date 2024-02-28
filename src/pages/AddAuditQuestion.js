@@ -11,8 +11,9 @@ export const AddAuditQuestion = () => {
         <p>Number of Audit questions is less than 5.</p>
         <p>Please add questions in Settings panel.</p>
         <button
-          onClick={() => {
+          onClick={(event) => {
             navigate(-1);
+            event.preventDefault();
           }}
           type="submit"
         >

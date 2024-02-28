@@ -117,8 +117,9 @@ export function AddAudit() {
 
           <footer className="grid">
             <button
-              onClick={() => {
+              onClick={(event) => {
                 navigate(-1);
+                event.preventDefault();
               }}
               type="submit"
               className="secondary"
@@ -126,11 +127,18 @@ export function AddAudit() {
               Cancel
             </button>
 
-            <Link to="/todo">
-              <button type="submit" onClick={addAudit}>
+            
+              <button
+                type="submit"
+                onClick={(event) => {
+                  addAudit();
+                  event.preventDefault();
+                  navigate("/todo");
+                }}
+              >
                 Confirm
               </button>
-            </Link>
+            
           </footer>
         </form>
       </article>
