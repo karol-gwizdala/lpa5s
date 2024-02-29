@@ -50,6 +50,20 @@ export function DelegateTask() {
     }
   }
 
+  const questionNumber = () => {
+    if (window.location.href.includes("question1")) {
+      return navigate(`/executeaudit/question2/${auditId}`);
+    } else if (window.location.href.includes("question2")) {
+      return navigate(`/executeaudit/question3/${auditId}`);
+    } else if (window.location.href.includes("question3")) {
+      return navigate(`/executeaudit/question4/${auditId}`);
+    } else if (window.location.href.includes("question4")) {
+      return navigate(`/executeaudit/question5/${auditId}`);
+    } else if (window.location.href.includes("question5")) {
+      return navigate(`/executeaudit/confirmmodal/${auditId}`);
+    }
+  };
+
   return (
     <dialog open>
       <article>
@@ -95,7 +109,7 @@ export function DelegateTask() {
           <button
             style={{ backgroundColor: "#00895A", borderColor: "#00895A" }}
             onClick={() => {
-              navigate(-1);
+              questionNumber();
               addRemark();
             }}
             type="submit"

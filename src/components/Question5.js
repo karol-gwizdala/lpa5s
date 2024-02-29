@@ -6,8 +6,9 @@ import { db } from "../db";
 export const Question5 = () => {
   const { auditId } = useParams();
   const navigate = useNavigate();
-  const [userQuestionStatus, setUserQuestionStatus] = useState("-");
+  const [userQuestionStatus, setUserQuestionStatus] = useState();
   const [answerStatus, setAnswerStatus] = useState("");
+  const [delegateStatus, setDelegateStatus] = useState();
   const [answerDelegateStatus, setAnswerDelegateStatus] = useState("disabled");
 
   const audits = useLiveQuery(() =>
@@ -24,12 +25,20 @@ export const Question5 = () => {
   useEffect(() => {
     if (userQuestionStatus === "OK") {
       setAnswerStatus("false");
+      setDelegateStatus(`/executeaudit/confirmmodal/${auditId}`);
       setAnswerDelegateStatus("disabled");
     } else if (userQuestionStatus === "NOK") {
       setAnswerStatus("true");
+      setDelegateStatus(`/executeaudit/question5/delegatetask/${auditId}`);
       setAnswerDelegateStatus("");
     }
-  }, [userQuestionStatus, answerStatus, answerDelegateStatus]);
+  }, [
+    userQuestionStatus,
+    answerStatus,
+    delegateStatus,
+    answerDelegateStatus,
+    auditId,
+  ]);
 
   return (
     <dialog open>
@@ -48,47 +57,32 @@ export const Question5 = () => {
                   }}
                   onClick={() => updateItemDb(item.id)}
                   name="question5Status"
-                  aria-label=""
                   required
                   aria-invalid={answerStatus}
                 >
-                  <option value="-" disabled>
-                    -
-                  </option>
                   <option>NOK</option>
                   <option>OK</option>
                 </select>
               </p>
-
-              <button
-                style={{ backgroundColor: "#D93526", borderColor: "#D93526" }}
-                type="submit"
-                className="secondary"
-                disabled={answerDelegateStatus}
-                onClick={() => {
-                  navigate(`/executeaudit/question5/delegatetask/${auditId}`);
-                }}
-              >
-                Delegate Task
-              </button>
-
               <div className="grid">
                 <Link to={`/executeaudit/question4/${auditId}`}>
                   <button type="submit" className="secondary">
                     Back
                   </button>
                 </Link>
-                <Link to={`/executeaudit/confirmmodal/${auditId}`}>
-                  <button
-                    style={{
-                      backgroundColor: "#00895A",
-                      borderColor: "#00895A",
-                    }}
-                    type="submit"
-                  >
-                    Complete Audit
-                  </button>
-                </Link>
+
+                <button
+                  style={{
+                    backgroundColor: "#00895A",
+                    borderColor: "#00895A",
+                  }}
+                  type="submit"
+                  onClick={() => {
+                    navigate(delegateStatus);
+                  }}
+                >
+                  Complete Audit
+                </button>
               </div>
             </div>
           );

@@ -5,6 +5,8 @@ import { db } from "../db";
 
 export const ExecuteTask = () => {
   const { auditId } = useParams();
+  const [remarkExecuteDate, setRemarkExecuteDate] = useState("");
+  const [remarkComment, setRemarkComment] = useState("");
 
   const remarks = useLiveQuery(() =>
     db.remark
@@ -16,9 +18,8 @@ export const ExecuteTask = () => {
   const updateItemDb = async (id) => {
     await db.remark.update(id, { remarkStatus: "Completed (Task)" });
     await db.remark.update(id, { remarkComment: remarkComment });
+    await db.remark.update(id, { remarkExecuteDate: remarkExecuteDate });
   };
-
-  const [remarkComment, setRemarkComment] = useState("");
 
   return (
     <dialog open>
@@ -40,6 +41,15 @@ export const ExecuteTask = () => {
                   aria-label="Text"
                 />
               </p>
+              <p>
+                <input
+                  value={remarkExecuteDate}
+                  onChange={(event) => setRemarkExecuteDate(event.target.value)}
+                  type="date"
+                  name="date"
+                  aria-label="Date"
+                />
+              </p>
               <div className="grid">
                 <Link to={"/todo"}>
                   <button type="submit" className="secondary">
@@ -47,7 +57,11 @@ export const ExecuteTask = () => {
                   </button>
                 </Link>
                 <Link to={"/completed"}>
-                  <button style={{backgroundColor: "#00895A", borderColor: "#00895A"}}
+                  <button
+                    style={{
+                      backgroundColor: "#00895A",
+                      borderColor: "#00895A",
+                    }}
                     type="submit"
                     onClick={() => {
                       updateItemDb(item.id);

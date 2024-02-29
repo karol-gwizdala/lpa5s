@@ -83,7 +83,7 @@ export const Completed = () => {
                 <tr key={item.id}>
                   <td>{item.id}</td>
                   <td>{item.auditArea}</td>
-                  <td>{item.remarkDate}</td>
+                  <td>{item.remarkExecuteDate}</td>
                   <td key={item.id}>
                     <Link to={`/completedtaskdetails/${item.id}`}>
                       <button type="submit">🛈</button>

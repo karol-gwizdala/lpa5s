@@ -28,6 +28,7 @@ export const CompletedTaskDetails = () => {
               <th>Remark</th>
               <th>Comment</th>
               <th>Date</th>
+              <th>Execute Date</th>
             </tr>
           </thead>
           <tbody>
@@ -39,6 +40,7 @@ export const CompletedTaskDetails = () => {
                   <td>{item.remark}</td>
                   <td>{item.remarkComment}</td>
                   <td>{item.remarkDate}</td>
+                  <td>{item.remarkExecuteDate}</td>
                 </tr>
               );
             })}

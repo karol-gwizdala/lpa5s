@@ -35,7 +35,7 @@ export function AddAudit() {
   const [area, setArea] = useState("");
   const [date, setDate] = useState("");
   const auditStatus = "To Do (Audit)";
-  const questionStatus = "-";
+  const questionStatus = "NOK";
   const question1 = arrayQuestionRandom[0];
   const question2 = arrayQuestionRandom[1];
   const question3 = arrayQuestionRandom[2];
