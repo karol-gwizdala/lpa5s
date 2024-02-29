@@ -81,7 +81,6 @@ export const ToDo = () => {
             <tr>
               <th>ID</th>
               <th>Area</th>
-              <th>Remark</th>
               <th>Date↓</th>
               <th>Execute</th>
             </tr>
@@ -92,7 +91,6 @@ export const ToDo = () => {
                 <tr key={item.id}>
                   <td>{item.id}</td>
                   <td>{item.auditArea}</td>
-                  <td>{item.remark}</td>
                   <td>{item.remarkDate}</td>
                   <td key={item.id}>
                     <Link to={`/executetask/${item.id}`}>
