@@ -23,11 +23,9 @@ export const CompletedTaskDetails = () => {
         <table className="striped">
           <thead>
             <tr>
-              <th>ID</th>
               <th>Audit ID</th>
               <th>Remark</th>
               <th>Comment</th>
-              <th>Date</th>
               <th>Execute Date</th>
             </tr>
           </thead>
@@ -35,11 +33,9 @@ export const CompletedTaskDetails = () => {
             {remarks?.map((item) => {
               return (
                 <tr key={item.id}>
-                  <td>{item.id}</td>
                   <td>{item.auditId}</td>
                   <td>{item.remark}</td>
                   <td>{item.remarkComment}</td>
-                  <td>{item.remarkDate}</td>
                   <td>{item.remarkExecuteDate}</td>
                 </tr>
               );
