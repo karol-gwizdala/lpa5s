@@ -51,7 +51,7 @@ export const Question2 = () => {
               <p>{item.question2}</p>
               <p>
                 <select
-                  // value={item.question2Status}
+                  value={item.question2Status}
                   onChange={(event) => {
                     setUserQuestionStatus(event.target.value);
                   }}
@@ -59,11 +59,7 @@ export const Question2 = () => {
                   name="question2Status"
                   required
                   aria-invalid={answerStatus}
-                  aria-label="-"
                 >
-                  <option selected disabled value="">
-                    -
-                  </option>
                   <option>NOK</option>
                   <option>OK</option>
                 </select>
