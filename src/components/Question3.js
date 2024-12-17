@@ -50,16 +50,15 @@ export const Question3 = () => {
               <h3>Question 3</h3>
               <p>{item.question3}</p>
               <p>
-                <select
-                  value={item.question3Status}
+              <select
+                  defaultValue="-"
                   onChange={(event) => {
                     setUserQuestionStatus(event.target.value);
                   }}
-                  onClick={() => updateItemDb(item.id)}
                   name="question3Status"
-                  required
                   aria-invalid={answerStatus}
                 >
+                  <option disabled>-</option>
                   <option>NOK</option>
                   <option>OK</option>
                 </select>
@@ -74,6 +73,7 @@ export const Question3 = () => {
                 <button
                   type="submit"
                   onClick={() => {
+                    updateItemDb(item.id);
                     navigate(delegateStatus);
                   }}
                 >
