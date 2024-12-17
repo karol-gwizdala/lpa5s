@@ -8,8 +8,8 @@ export const Home = () => {
       <h6>First run:</h6>
       <ul>
         <li>Go to Settings panel</li>
-        <li>Set up Layer (User) List, Area List and Question List (min. 5)</li>
-        <li>Choose Layer (User)</li>
+        <li>Set up Layer List, Area List and Question List (min. 5)</li>
+        <li>Choose Layer</li>
       </ul>
       <h6>Panel description:</h6>
       <ul>
@@ -17,7 +17,7 @@ export const Home = () => {
         <li>To Do - list of all Audits and Delegated Tasks to execute</li>
         <li>Completed - list of all Completed Audits and Tasks</li>
         <li>Settings</li>
-        <li>User - select user</li>
+        <li>Layer - select layer</li>
       </ul>
     </article>
   );

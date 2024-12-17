@@ -18,7 +18,7 @@ export const SelectedUser = () => {
       }}
     >
       <option value="" disabled>
-        User
+        Layer
       </option>
       {roles?.map((item) => {
         return <option key={item.id}>{item.role}</option>;
